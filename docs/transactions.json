@@ -1,0 +1,44 @@
+{
+  "archive": [
+    {
+      "transaction_id": 1,
+      "created": "01/01/2016",
+      "subject": "\"\"",
+      "is_signed": true,
+      "is_requested_signature": true,
+      "document": {
+        "id": 1,
+        "author": 3,
+        "path": "\"/doc1.pdf\""
+      }
+    }
+  ],
+  "inbox": [
+    {
+      "transaction_id": 1,
+      "created": "01/01/2016",
+      "subject": "\"\"",
+      "is_signed": true,
+      "is_requested_signature": true,
+      "document": {
+        "id": 1,
+        "author": 3,
+        "path": "\"/doc1.pdf\""
+      }
+    }
+  ],
+  "send": [
+    {
+      "transaction_id": 1,
+      "created": "01/01/2016",
+      "subject": "\"\"",
+      "is_signed": true,
+      "is_requested_signature": true,
+      "document": {
+        "id": 1,
+        "author": 3,
+        "path": "\"/doc1.pdf\""
+      }
+    }
+  ]
+}
