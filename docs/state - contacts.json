@@ -1,0 +1,24 @@
+{
+  "send": [
+    {
+      "user": {
+        "id": 1,
+        "name": "Propulsion",
+        "surname": "Academy",
+        "identifier": "33435453V"
+      },
+      "status": 1
+    }
+  ],
+  "receive": [
+    {
+      "user": {
+        "id": 2,
+        "name": "Propulsion",
+        "surname": "Academy",
+        "identifier": "33462135V"
+      },
+      "status": 0
+    }
+  ]
+}
