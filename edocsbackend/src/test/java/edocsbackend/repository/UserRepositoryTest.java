@@ -45,6 +45,12 @@ public class UserRepositoryTest extends AbstractEdocsbackendIntegrationTest {
 	
 	@Test
 	public void findAll(){
-			assertThat(repo.findAll().size()).isEqualTo((int) repo.count());
+		assertThat(repo.findAll().size()).isEqualTo((int) repo.count());
+	}
+	
+	@Test
+	public void testCategories(){
+		User userTest = repo.findById(2L);
+		assertThat(userTest.getCategories().size()).isEqualTo(3);
 	}
 }
