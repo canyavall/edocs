@@ -60,9 +60,12 @@ public class User {
 	
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List <Category> categories;
+	
+	@OneToMany(mappedBy="originUser", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List <Transaction> transactions;
 
 	public User(String name, String surname, String identityNumber, Boolean userType, String email, String country,
-			String language, String password, List<Category> categories) {
+			String language, String password, List<Category> categories, List<Transaction> transactions) {
 		this.name = name;
 		this.surname = surname;
 		this.identityNumber = identityNumber;
@@ -72,6 +75,7 @@ public class User {
 		this.language = language;
 		this.password = password;
 		this.categories = categories;
+		this.transactions = transactions;
 	}
 	
 }
