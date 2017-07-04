@@ -1,13 +1,16 @@
 package edocsbackend.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -38,10 +41,26 @@ public class Category {
 	
 	@ManyToOne(optional=false)
 	private User user;
+	
+	@OneToMany(mappedBy="targetCategory", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List <Transaction> transactions;
+	
+	@OneToMany(mappedBy="originCategory", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List <Contact> originContacts;
+	
+	@OneToMany(mappedBy="targetCategory", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List <Contact> targetContacts;
 
-	public Category(String name, Boolean isGeneral, User user) {
+	public Category(String name, Boolean isGeneral, User user, List <Transaction> transactions, List <Contact> originContacts, List <Contact> targetContacts) {
 		this.name = name;
 		this.isGeneral = isGeneral;
 		this.user = user;
-	}	
+		this.transactions = transactions;
+		this.originContacts = originContacts;
+		this.targetContacts = targetContacts;
+	}
+	
+	public void addTransaction (Transaction transaction){
+		this.transactions.add(transaction);
+	}
 }

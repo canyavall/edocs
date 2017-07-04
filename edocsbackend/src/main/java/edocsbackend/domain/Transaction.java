@@ -39,9 +39,6 @@ public class Transaction {
 	private LocalDateTime opened;
 	
 	@Column(nullable = false)
-	private Boolean isGeneral;
-	
-	@Column(nullable = false)
 	private Boolean isSigned;
 	
 	@Column(nullable = false)
@@ -57,20 +54,19 @@ public class Transaction {
 	private User originUser;
 	
 	@ManyToOne(optional=false)
-	private Category category;
+	private Category targetCategory;
 
-	public Transaction(LocalDateTime created, String subject, LocalDateTime opened, Boolean isGeneral, Boolean isSigned,
-			Boolean isArchived, Boolean isRequestedSignature, Document document, User originUser, Category category) {
+	public Transaction(LocalDateTime created, String subject, LocalDateTime opened, Boolean isSigned,
+			Boolean isArchived, Boolean isRequestedSignature, Document document, User originUser, Category targetCategory) {
 		this.created = created;
 		this.subject = subject;
 		this.opened = opened;
-		this.isGeneral = isGeneral;
 		this.isSigned = isSigned;
 		this.isArchived = isArchived;
 		this.isRequestedSignature = isRequestedSignature;
 		this.document = document;
 		this.originUser = originUser;
-		this.category = category;
+		this.targetCategory = targetCategory;
 	}
 	
 	

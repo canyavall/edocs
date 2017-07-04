@@ -36,8 +36,7 @@ public class Document {
 	@ManyToOne(optional=false)
 	private User author;
 
-	public Document(LocalDateTime created, String path, User author) {
-		this.created = created;
+	public Document(String path, User author) {
 		this.path = path;
 		this.author = author;
 	}	

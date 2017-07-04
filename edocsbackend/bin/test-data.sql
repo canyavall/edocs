@@ -28,3 +28,17 @@ INSERT INTO category (id, created, name, is_general, user_id) VALUES (13, {ts '2
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (14, {ts '2017-01-01 00:00:00.00'}, 'General', 1, 8);
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (15, {ts '2017-01-01 00:00:00.00'}, 'General', 1, 9);
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (16, {ts '2017-01-01 00:00:00.00'}, 'General', 1, 10);
+
+INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, 2, 1, 2);
+INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 2, 4, 2, 2);
+INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 13, 14, 3, 1);
+INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 15, 16, 2, 1);
+INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 13, 3, 1, 3);
+
+INSERT INTO document (id, created, author_id, path) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, '/docs/doc1.pdf');
+INSERT INTO document (id, created, author_id, path) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 2, '/docs/doc2.pdf');
+INSERT INTO document (id, created, author_id, path) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 3, '/docs/doc3.pdf');
+INSERT INTO document (id, created, author_id, path) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 4, '/docs/doc4.pdf');
+INSERT INTO document (id, created, author_id, path) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 5, '/docs/doc5.pdf');
+
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1,1,2,'Contract', null, false, false, false);

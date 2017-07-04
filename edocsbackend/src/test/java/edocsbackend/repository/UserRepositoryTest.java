@@ -29,14 +29,7 @@ public class UserRepositoryTest extends AbstractEdocsbackendIntegrationTest {
 		assertThat(repo.findById(11L).getName()).isEqualTo("Dead");
 	}
 	
-	@Test
-	public void testRemoveUser(){
-		assertThat(repo.count()).isEqualTo(10);
-		repo.delete(1L);
-		assertThat(repo.count()).isEqualTo(9);
-		assertThat(repo.findById(1L)).isNull();
-	}
-	
+
 	@Test
 	public void testFindByTypeAndName(){
 		List<User> usersTest = repo.findByUserTypeAndNameContaining(false, "Kobe");
@@ -44,7 +37,7 @@ public class UserRepositoryTest extends AbstractEdocsbackendIntegrationTest {
 	}
 	
 	@Test
-	public void findAll(){
+	public void testFindAll(){
 		assertThat(repo.findAll().size()).isEqualTo((int) repo.count());
 	}
 	
