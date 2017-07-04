@@ -63,4 +63,12 @@ public class Category {
 	public void addTransaction (Transaction transaction){
 		this.transactions.add(transaction);
 	}
+	
+	public void addOriginContact(Contact contact){
+		this.originContacts.add(contact);
+	}
+	
+	public void addTargetContact(Contact contact){
+		this.targetContacts.add(contact);
+	}
 }

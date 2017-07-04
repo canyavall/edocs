@@ -42,3 +42,8 @@ INSERT INTO document (id, created, author_id, path) VALUES (4, {ts '2017-01-01 0
 INSERT INTO document (id, created, author_id, path) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 5, '/docs/doc5.pdf');
 
 INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1,1,2,'Contract', null, false, false, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 2,3,9,'Contract', null, true, false, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 3,4,12,'Contract', null, true, true, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 4,5,16,'Contract', null, false, true, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 5,7,9,'Contract', null, false, false, true);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (6, {ts '2017-01-01 00:00:00.00'}, 2,1,11,'Contract', null, false, false, false);

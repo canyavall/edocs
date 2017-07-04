@@ -23,6 +23,7 @@ public class CategoryRepositoryTest extends AbstractEdocsbackendIntegrationTest 
 		assertThat(repo.findById(2L).getTargetContacts().size()).isEqualTo(1);
 		
 		//Check transactions
+		assertThat(repo.findById(9L).getTransactions().size()).isEqualTo(2);
 	}
 	
 }

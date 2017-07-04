@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	User findById(Long id);
 	
 	//Select * from User where type ? :type and name like :name
-	List <User> findByUserTypeAndNameContaining(Boolean userType, String name);
+	List <User> findByUserTypeAndNameIgnoreCaseContaining(Boolean userType, String name);
 	
 //	@Query("SELECT us.name, ca.name, co.origin_status, co.target_status FROM  "
 //			+ "user as us, category as ca, contact as co WHERE "
