@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edocsbackend.domain.Transaction;
 import edocsbackend.repository.TransactionRepository;
 
 @Transactional(readOnly = true)
@@ -16,11 +15,6 @@ public class DefaultTransactionService implements TransactionService {
 	@Autowired
 	public DefaultTransactionService(TransactionRepository transactionRepository) {
 		this.transactionRepository = transactionRepository;
-	}
-
-	@Override
-	public Transaction findById(Long id) {
-		return transactionRepository.findById(id);
 	}
 
 }

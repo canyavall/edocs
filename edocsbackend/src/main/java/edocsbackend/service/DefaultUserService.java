@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edocsbackend.domain.Category;
+import edocsbackend.domain.Contact;
 import edocsbackend.domain.Transaction;
 import edocsbackend.domain.User;
 import edocsbackend.repository.UserRepository;
@@ -26,7 +27,9 @@ public class DefaultUserService implements UserService {
 
 	@Override
 	public User createUser(User user) {
-		return userRepository.save(user);
+		userRepository.save(user);
+		user.addCategory(new Category("General", true, user));
+		return user;
 	}
 	
 	@Transactional(readOnly = false)
@@ -82,8 +85,9 @@ public class DefaultUserService implements UserService {
 		return user;
 	}
 
-
-	
-	
+	@Override
+	public List<Contact> findContactInfo(Long id) {
+		return userRepository.findContactInfo(id);
+	}
 
 }

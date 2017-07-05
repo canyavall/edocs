@@ -24,32 +24,4 @@ public class DefaultCategoryService implements CategoryService {
 		return categoryRepository.findById(id);
 	}
 
-	@Transactional(readOnly = false)
-	@Override
-	public Category addOriginContact(Category category, Contact contact) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Transactional(readOnly = false)
-	@Override
-	public Category updateOriginContact(Category category, Contact contact) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Transactional(readOnly = false)
-	@Override
-	public Category addTargetContact(Category category, Contact contact) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Transactional(readOnly = false)
-	@Override
-	public Category updateTargetContact(Category category, Contact contact) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

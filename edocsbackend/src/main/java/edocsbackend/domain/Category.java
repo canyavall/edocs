@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -24,6 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="category")
 @EqualsAndHashCode(exclude = {"id"})
+@ToString(exclude= "user")
 public class Category {
 
 	@Id
@@ -44,31 +46,16 @@ public class Category {
 	
 	@OneToMany(mappedBy="targetCategory", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List <Transaction> transactions;
-	
-	@OneToMany(mappedBy="originCategory", cascade=CascadeType.ALL, orphanRemoval=true)
-	private List <Contact> originContacts;
-	
-	@OneToMany(mappedBy="targetCategory", cascade=CascadeType.ALL, orphanRemoval=true)
-	private List <Contact> targetContacts;
 
-	public Category(String name, Boolean isGeneral, User user, List <Transaction> transactions, List <Contact> originContacts, List <Contact> targetContacts) {
+	public Category(String name, Boolean isGeneral, User user) {
 		this.name = name;
 		this.isGeneral = isGeneral;
 		this.user = user;
-		this.transactions = transactions;
-		this.originContacts = originContacts;
-		this.targetContacts = targetContacts;
 	}
 	
 	public void addTransaction (Transaction transaction){
+		transaction.setTargetCategory(this);
 		this.transactions.add(transaction);
 	}
-	
-	public void addOriginContact(Contact contact){
-		this.originContacts.add(contact);
-	}
-	
-	public void addTargetContact(Contact contact){
-		this.targetContacts.add(contact);
-	}
+
 }

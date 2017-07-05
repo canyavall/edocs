@@ -17,10 +17,20 @@ public class DefaultContactService implements ContactService {
 	public DefaultContactService (ContactRepository contactRepository){
 		this.contactRepository = contactRepository;
 	}
-	
+
 	@Override
 	public Contact findById(Long id) {
 		return contactRepository.findById(id);
 	}
 
+	@Override
+	public Contact createNewContact(Contact contact) {
+		return contactRepository.save(contact);
+	}
+
+	@Override
+	public Contact updatecontact(Contact contact) {
+		return contactRepository.save(contact);
+	}
+	
 }

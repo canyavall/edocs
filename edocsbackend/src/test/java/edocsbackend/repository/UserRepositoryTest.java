@@ -51,4 +51,9 @@ public class UserRepositoryTest extends AbstractEdocsbackendIntegrationTest {
 	public void testTransactions(){
 		assertThat(repo.findById(1L).getSendTransactions().size()).isEqualTo(2);
 	}
+	
+	@Test
+	public void testFindContactInfo(){
+		assertThat(repo.findContactInfo(4L).size()).isEqualTo(1);
+	}
 }

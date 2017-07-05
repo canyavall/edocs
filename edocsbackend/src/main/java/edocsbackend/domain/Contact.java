@@ -30,20 +30,19 @@ public class Contact {
 	@Column(nullable = false, length = 120)
 	private LocalDateTime created = LocalDateTime.now();
 	
-	@Column(nullable = false, length = 1)
-	private int originStatus;
-	
-	@Column(nullable = false, length = 1)
-	private int targetStatus;
-	
 	@ManyToOne(optional=false)
 	private Category originCategory;
 	
 	@ManyToOne(optional=false)
 	private Category targetCategory;
+	
+	@Column(nullable = false, length = 1)
+	private int originStatus;
+	
+	@Column(nullable = false, length = 1)
+	private int targetStatus;
 
-	public Contact(LocalDateTime created, Category originCategory, Category targetCategory, int originStatus, int targetStatus) {
-		this.created = created;
+	public Contact(Category originCategory, Category targetCategory, int originStatus, int targetStatus) {
 		this.originCategory = originCategory;
 		this.targetCategory = targetCategory;
 		this.originStatus = originStatus;

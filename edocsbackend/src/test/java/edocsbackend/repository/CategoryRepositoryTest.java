@@ -13,14 +13,10 @@ public class CategoryRepositoryTest extends AbstractEdocsbackendIntegrationTest 
 	CategoryRepository repo;
 	
 	@Test
-	public void findById(){
+	public void testFindById(){
 		//Check main data
 		assertThat(repo.findById(5L).getName()).isEqualTo("Flights");
 		assertThat(repo.findById(50L)).isNull();
-		
-		//Check contacts
-		assertThat(repo.findById(2L).getOriginContacts().size()).isEqualTo(1);
-		assertThat(repo.findById(2L).getTargetContacts().size()).isEqualTo(1);
 		
 		//Check transactions
 		assertThat(repo.findById(9L).getTransactions().size()).isEqualTo(2);

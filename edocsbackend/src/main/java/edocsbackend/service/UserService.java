@@ -3,6 +3,7 @@ package edocsbackend.service;
 import java.util.List;
 
 import edocsbackend.domain.Category;
+import edocsbackend.domain.Contact;
 import edocsbackend.domain.Transaction;
 import edocsbackend.domain.User;
 
@@ -15,6 +16,8 @@ public interface UserService {
 	List <User> findAllUSersByTypeAndName(Boolean userType, String name);
 	
 	User findUserById (Long id);
+	
+	List <Contact> findContactInfo(Long id);
 	
 	User addCategory(User user, Category category);
 	
