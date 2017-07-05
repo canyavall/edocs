@@ -1,5 +1,10 @@
 package edocsbackend.service;
 
-public interface TransactionService {
+import edocsbackend.domain.Transaction;
 
+public interface TransactionService {
+	
+	Transaction findById(Long id);
+	
+	Transaction createTransaction(Transaction transaction);
 }

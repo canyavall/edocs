@@ -54,9 +54,8 @@ public class Transaction {
 	@ManyToOne(optional=false)
 	private Category targetCategory;
 
-	public Transaction(LocalDateTime created, String subject, LocalDateTime opened, Boolean isSigned,
-			Boolean isArchived, Boolean isRequestedSignature, Document document, User originUser, Category targetCategory) {
-		this.created = created;
+	public Transaction(String subject, LocalDateTime opened, Boolean isSigned, Boolean isArchived,
+					   Boolean isRequestedSignature, Document document, User originUser, Category targetCategory) {
 		this.subject = subject;
 		this.opened = opened;
 		this.isSigned = isSigned;

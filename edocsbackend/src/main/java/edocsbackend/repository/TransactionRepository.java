@@ -8,5 +8,6 @@ import edocsbackend.domain.Transaction;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long>{
 	
-
+	Transaction findById(Long id);
+	
 }
