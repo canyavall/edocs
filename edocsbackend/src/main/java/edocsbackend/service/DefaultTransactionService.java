@@ -18,12 +18,6 @@ public class DefaultTransactionService implements TransactionService {
 		this.transactionRepository = transactionRepository;
 	}
 
-	@Transactional(readOnly = false)
-	@Override
-	public Transaction createTransaction(Transaction transaction) {
-		return transactionRepository.save(transaction);
-	}
-
 	@Override
 	public Transaction findById(Long id) {
 		return transactionRepository.findById(id);
