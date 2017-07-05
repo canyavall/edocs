@@ -50,41 +50,29 @@ public class DefaultUserService implements UserService {
 
 	@Transactional(readOnly = false)
 	@Override
-	public User addCategory(User user, Category category) {
-		user.addCategory(category);
-		return user;
+	public User addCategory(Category category) {
+		category.getUser().addCategory(category);
+		return category.getUser();
 	}
 	
 	@Transactional(readOnly = false)
 	@Override
-	public User updateCategory(User user, Category category) {
-		for( Category c : user.getCategories()){
+	public User updateCategory(Category category) {
+		for( Category c : category.getUser().getCategories()){
 			if (c.getId() == category.getId()){
 				c.setName(category.getName());
 			}
 		}
-		return user;
+		return category.getUser();
 	}
 	
-	@Transactional(readOnly = false)
-	@Override
-	public User addSendingTransaction(User user, Transaction transaction) {
-		user.addSendTransaction(transaction);
-		return user;
+		@Override
+	public User addSendingTransaction(Transaction transaction) {
+		transaction.getOriginUser().addSendTransaction(transaction);
+		transaction.getTargetCategory().getTransactions().add(transaction);
+		return transaction.getOriginUser();
 	}
-
-	@Transactional(readOnly = false)
-	@Override
-	public User updateSendingTransaction(User user, Transaction transaction) {
-		for (Transaction t : user.getSendTransactions()){
-			if (t.getId() == transaction.getId()){
-				t = transaction;
-				break;
-			}
-		}
-		return user;
-	}
-
+		
 	@Override
 	public List<Contact> findContactInfo(Long id) {
 		return userRepository.findContactInfo(id);

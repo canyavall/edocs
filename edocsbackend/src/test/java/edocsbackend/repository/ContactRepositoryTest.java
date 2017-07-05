@@ -42,6 +42,6 @@ public class ContactRepositoryTest  extends AbstractEdocsbackendIntegrationTest 
 		assertThat(contact.getOriginStatus()).isEqualTo(1);
 		contact.setOriginStatus(3);
 		
-		assertThat(contactRepository.findById(1L).getOriginStatus()).isEqualTo(1);
+		assertThat(contactRepository.findById(1L).getOriginStatus()).isEqualTo(3);
 	}
 }

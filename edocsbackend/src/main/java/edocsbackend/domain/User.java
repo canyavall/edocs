@@ -86,4 +86,8 @@ public class User {
 		this.categories.add(category);
 	}
 	
+	public void addTransaction(Transaction transaction){
+		this.sendTransactions.add(transaction);
+	}
+	
 }

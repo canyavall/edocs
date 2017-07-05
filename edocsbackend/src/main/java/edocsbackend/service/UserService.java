@@ -19,11 +19,9 @@ public interface UserService {
 	
 	List <Contact> findContactInfo(Long id);
 	
-	User addCategory(User user, Category category);
+	User addCategory(Category category);
 	
-	User updateCategory(User user, Category category);
+	User updateCategory(Category category);
 	
-	User addSendingTransaction(User user, Transaction transaction);
-	
-	User updateSendingTransaction(User user, Transaction transaction);
+	User addSendingTransaction(Transaction transaction);
 }

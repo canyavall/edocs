@@ -52,10 +52,5 @@ public class Category {
 		this.isGeneral = isGeneral;
 		this.user = user;
 	}
-	
-	public void addTransaction (Transaction transaction){
-		transaction.setTargetCategory(this);
-		this.transactions.add(transaction);
-	}
 
 }
