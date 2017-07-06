@@ -9,5 +9,9 @@ public interface JsonViews {
 
 	interface Categories {
 	}
+	
+	interface Category {
+		
+	}
 
 }

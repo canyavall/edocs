@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,6 +25,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(exclude = {"id"})
 public class Document {
 
+	@JsonView(JsonViews.Category.class)
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -30,6 +33,7 @@ public class Document {
 	@Column(nullable = false, length = 120)
 	private LocalDateTime created = LocalDateTime.now();
 	
+	@JsonView(JsonViews.Category.class)
 	@Column(nullable = false, length = 75)
 	private String path;
 	

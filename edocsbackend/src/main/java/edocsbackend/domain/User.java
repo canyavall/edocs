@@ -30,6 +30,7 @@ import lombok.ToString;
 @EqualsAndHashCode(exclude = {"id", "password"})
 public class User {
 
+	@JsonView(JsonViews.Category.class)
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -37,17 +38,20 @@ public class User {
 	@Column(nullable = false, length = 120)
 	private LocalDateTime created = LocalDateTime.now();
 	
+	@JsonView(JsonViews.Category.class)
 	@Column(nullable = false, length = 120)
 	private String name;
 	
+	@JsonView(JsonViews.Category.class)
 	@Column(length = 75)
 	private String surname;
 	
 	@Column(nullable = false, name="identity_number", length = 10, unique = true)
 	private String identityNumber;
 	
-	@Column(name = "user_type", nullable = false, length = 1)
-	private Boolean userType;
+	@JsonView(JsonViews.Category.class)
+	@Column(name = "is_company", nullable = false, length = 1)
+	private Boolean isCompany;
 	
 	@Column(nullable = false, length = 120)
 	private String email;
@@ -68,12 +72,12 @@ public class User {
 	@OneToMany(mappedBy="originUser", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List <Transaction> sendTransactions = new ArrayList<>();;
 	
-	public User(String name, String surname, String identityNumber, Boolean userType, String email, String country,
+	public User(String name, String surname, String identityNumber, Boolean isCompany, String email, String country,
 			String language, String password, List<Category> categories, List<Transaction> sendTransactions) {
 		this.name = name;
 		this.surname = surname;
 		this.identityNumber = identityNumber;
-		this.userType = userType;
+		this.isCompany = isCompany;
 		this.email = email;
 		this.country = country;
 		this.language = language;
@@ -82,12 +86,12 @@ public class User {
 		this.sendTransactions = sendTransactions;
 	}
 	
-	public User(String name, String surname, String identityNumber, Boolean userType, String email, String country,
+	public User(String name, String surname, String identityNumber, Boolean isCompany, String email, String country,
 			String language, String password) {
 		this.name = name;
 		this.surname = surname;
 		this.identityNumber = identityNumber;
-		this.userType = userType;
+		this.isCompany = isCompany;
 		this.email = email;
 		this.country = country;
 		this.language = language;

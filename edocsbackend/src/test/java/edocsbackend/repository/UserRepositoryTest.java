@@ -32,7 +32,7 @@ public class UserRepositoryTest extends AbstractEdocsbackendIntegrationTest {
 
 	@Test
 	public void testFindByTypeAndName(){
-		List<User> usersTest = repo.findByUserTypeAndNameIgnoreCaseContaining(false, "Kobe");
+		List<User> usersTest = repo.findByIsCompanyAndNameIgnoreCaseContaining(false, "Kobe");
 		assertThat(usersTest.get(0).getName()).isEqualTo("Kobe");
 	}
 	

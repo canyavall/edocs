@@ -50,6 +50,7 @@ public class Category {
 	@ManyToOne(optional=false)
 	private User user;
 	
+	@JsonView(JsonViews.Category.class)
 	@OneToMany(mappedBy="targetCategory", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List <Transaction> transactions = new ArrayList<>();
 
