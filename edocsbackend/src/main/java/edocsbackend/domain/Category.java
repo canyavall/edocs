@@ -1,6 +1,7 @@
 package edocsbackend.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,7 +26,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Table(name="category")
 @EqualsAndHashCode(exclude = {"id"})
-@ToString(exclude= "user")
+@ToString(exclude= {"user", "transactions"})
 public class Category {
 
 	@Id
@@ -45,12 +46,22 @@ public class Category {
 	private User user;
 	
 	@OneToMany(mappedBy="targetCategory", cascade=CascadeType.ALL, orphanRemoval=true)
-	private List <Transaction> transactions;
+	private List <Transaction> transactions = new ArrayList<>();
 
+	public Category(String name, Boolean isGeneral, User user, List <Transaction> transactions) {
+		this.name = name;
+		this.isGeneral = isGeneral;
+		this.user = user;
+		this.transactions = transactions;
+	}
+	
 	public Category(String name, Boolean isGeneral, User user) {
 		this.name = name;
 		this.isGeneral = isGeneral;
 		this.user = user;
 	}
 
+	public void addTransaction(Transaction transaction){
+		this.transactions.add(transaction);
+	}
 }

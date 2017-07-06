@@ -27,9 +27,10 @@ public class DefaultUserService implements UserService {
 
 	@Override
 	public User createUser(User user) {
-		userRepository.save(user);
-		user.addCategory(new Category("General", true, user));
-		return user;
+		User currentUser = userRepository.save(user);
+		Category category = new Category("General", true, currentUser, null);
+		currentUser.addCategory(category);
+		return currentUser;
 	}
 	
 	@Transactional(readOnly = false)
@@ -50,9 +51,10 @@ public class DefaultUserService implements UserService {
 
 	@Transactional(readOnly = false)
 	@Override
-	public User addCategory(Category category) {
-		category.getUser().addCategory(category);
-		return category.getUser();
+	public User addUserCategory(Category category) {
+		User user = category.getUser();
+		user.addCategory(category);
+		return user;
 	}
 	
 	@Transactional(readOnly = false)
@@ -66,10 +68,12 @@ public class DefaultUserService implements UserService {
 		return category.getUser();
 	}
 	
-		@Override
+	@Override
 	public User addSendingTransaction(Transaction transaction) {
+		//Add the transaction into the user sendtransaction and
+		// into the transaction list of the category target
 		transaction.getOriginUser().addSendTransaction(transaction);
-		transaction.getTargetCategory().getTransactions().add(transaction);
+		transaction.getTargetCategory().addTransaction(transaction);
 		return transaction.getOriginUser();
 	}
 		

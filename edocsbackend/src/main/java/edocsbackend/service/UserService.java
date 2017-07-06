@@ -19,7 +19,7 @@ public interface UserService {
 	
 	List <Contact> findContactInfo(Long id);
 	
-	User addCategory(Category category);
+	User addUserCategory(Category category);
 	
 	User updateCategory(Category category);
 	

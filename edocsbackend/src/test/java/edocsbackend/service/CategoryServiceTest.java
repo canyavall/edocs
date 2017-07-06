@@ -21,6 +21,9 @@ public class CategoryServiceTest extends AbstractEdocsbackendIntegrationTest {
 		//Check main data
 		assertThat(categoryService.findById(5L).getName()).isEqualTo("Flights");
 		assertThat(categoryService.findById(50L)).isNull();
+		
+		//Check transactions
+		assertThat(categoryService.findById(9L).getTransactions().size()).isEqualTo(2);
 	}
 	
 }

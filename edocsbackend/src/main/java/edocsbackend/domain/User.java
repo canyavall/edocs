@@ -1,6 +1,7 @@
 package edocsbackend.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -58,11 +61,12 @@ public class User {
 	@Column(nullable = false, length = 20)
 	private String password;
 	
+	@JsonView(JsonViews.Categories.class)
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval=true)
-	private List <Category> categories;
+	private List <Category> categories = new ArrayList<>();
 	
 	@OneToMany(mappedBy="originUser", cascade=CascadeType.ALL, orphanRemoval=true)
-	private List <Transaction> sendTransactions;
+	private List <Transaction> sendTransactions = new ArrayList<>();;
 	
 	public User(String name, String surname, String identityNumber, Boolean userType, String email, String country,
 			String language, String password, List<Category> categories, List<Transaction> sendTransactions) {
@@ -78,12 +82,24 @@ public class User {
 		this.sendTransactions = sendTransactions;
 	}
 	
+	public User(String name, String surname, String identityNumber, Boolean userType, String email, String country,
+			String language, String password) {
+		this.name = name;
+		this.surname = surname;
+		this.identityNumber = identityNumber;
+		this.userType = userType;
+		this.email = email;
+		this.country = country;
+		this.language = language;
+		this.password = password;
+	}
+	
 	public void addSendTransaction (Transaction transaction){
 		this.sendTransactions.add(transaction);
 	}
 	
 	public void addCategory(Category category) {
-		this.categories.add(category);
+		this.getCategories().add(category);
 	}
 	
 	public void addTransaction(Transaction transaction){
