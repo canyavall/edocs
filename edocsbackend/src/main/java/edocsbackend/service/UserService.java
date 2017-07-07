@@ -13,7 +13,7 @@ public interface UserService {
 	
 	User updateUser(User user);
 	
-	List <User> findAllUSersByTypeAndName(Boolean userType, String name);
+	List <User> findAllUSersByTypeAndName(Boolean userType, String name, String country);
 	
 	User findUserById (Long id);
 	

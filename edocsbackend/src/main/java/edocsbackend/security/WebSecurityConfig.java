@@ -36,6 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 					.mvcMatchers(POST, "/login").permitAll()
 					.mvcMatchers(POST, "/register").permitAll()
+					.mvcMatchers(PUT, "/profile").permitAll()
+					.mvcMatchers(GET, "/users").permitAll()
+					.mvcMatchers(GET, "/sent/{id}").permitAll()
 			.and()
 
 			.mvcMatcher("/categories/**")
@@ -45,6 +48,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.mvcMatchers(POST,  "/categories/create").permitAll() // Create new category
 					.mvcMatchers(DELETE,  "/categories/{id}").permitAll() // Delete category
 					.mvcMatchers(PUT,  "/categories/{id}").permitAll() // Edit category
+			.and()
+			
+			.mvcMatcher("/contacts/**")
+				.authorizeRequests()
+					.mvcMatchers(GET,  "/contacts/{id}").permitAll() // Get category by id and transactions
 			.and()
 			.mvcMatcher("/**")
 				.authorizeRequests()

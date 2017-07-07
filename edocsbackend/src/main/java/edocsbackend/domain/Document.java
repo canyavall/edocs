@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(exclude = {"id"})
 public class Document {
 
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicDocument.class)
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -33,7 +33,7 @@ public class Document {
 	@Column(nullable = false, length = 120)
 	private LocalDateTime created = LocalDateTime.now();
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicDocument.class)
 	@Column(nullable = false, length = 75)
 	private String path;
 	

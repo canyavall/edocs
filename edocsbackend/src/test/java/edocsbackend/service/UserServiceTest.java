@@ -42,8 +42,8 @@ public class UserServiceTest extends AbstractEdocsbackendIntegrationTest{
 	
 	@Test
 	public void findAllUSersByTypeAndName(){
-		assertThat(userService.findAllUSersByTypeAndName(true, "layne").size()).isEqualTo(1);
-		assertThat(userService.findAllUSersByTypeAndName(false, "k").size()).isEqualTo(2);
+		assertThat(userService.findAllUSersByTypeAndName(true, "layne", "United States").size()).isEqualTo(1);
+		assertThat(userService.findAllUSersByTypeAndName(false, "k", "United States").size()).isEqualTo(2);
 	}
 	
 	@Test

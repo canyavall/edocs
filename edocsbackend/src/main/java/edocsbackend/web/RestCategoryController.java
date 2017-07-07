@@ -25,11 +25,15 @@ import edocsbackend.service.UserService;
 @RestController
 @RequestMapping("/categories")
 public class RestCategoryController {
-	@Autowired
+	
 	UserService userService;
+	CategoryService categoryService;
 	
 	@Autowired
-	CategoryService categoryService;
+	public RestCategoryController (UserService userService, CategoryService categoryService){
+		this.userService = userService;
+		this.categoryService = categoryService;
+	}
 	
 	@JsonView(JsonViews.Categories.class)
 	@GetMapping
@@ -43,6 +47,7 @@ public class RestCategoryController {
 		return categoryService.findById(id);
 	}
 	
+	//Expects {"userId": ?userId, "name": ?name }
 	@PostMapping("/create")
 	public void createCategory(@RequestBody Map<String, String> json){
 		User user = userService.findUserById(Long.parseLong( json.get( "userId" ) ));
@@ -50,6 +55,7 @@ public class RestCategoryController {
 		userService.addUserCategory(category);
 	}
 	
+	//Expects {"name": ?name}
 	@PutMapping("/{id}")
 	@CrossOrigin
 	public void updateCategory(@RequestBody Map<String, String> json, @PathVariable Long id){

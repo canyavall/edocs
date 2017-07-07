@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.AllArgsConstructor;
@@ -31,7 +32,7 @@ import lombok.ToString;
 @ToString(exclude= {"user", "transactions"})
 public class Category {
 
-	@JsonView(JsonViews.Categories.class)
+	@JsonView(JsonViews.BasicCategory.class)
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -39,11 +40,11 @@ public class Category {
 	@Column(nullable = false, length = 120)
 	private LocalDateTime created = LocalDateTime.now();
 	
-	@JsonView(JsonViews.Categories.class)
+	@JsonView(JsonViews.BasicCategory.class)
 	@Column(nullable = false, length = 25)
 	private String name;
 	
-	@JsonView(JsonViews.Categories.class)
+	@JsonView(JsonViews.BasicCategory.class)
 	@Column(nullable = false)
 	private Boolean isGeneral;
 	
@@ -69,5 +70,10 @@ public class Category {
 
 	public void addTransaction(Transaction transaction){
 		this.transactions.add(transaction);
+	}
+	
+	@JsonIgnore
+	public User getUser(){
+		return this.user;
 	}
 }

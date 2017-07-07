@@ -1,8 +1,8 @@
-delete from document;
 delete from transaction;
+delete from document;
 delete from contact;
-delete from user;
 delete from category;
+delete from user;
 
 INSERT INTO user (id, created, is_company, name, surname, identity_number, email, country, password, language) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, 'Jordynn', 'Rigel', '75545347', 'Jordy.LUN8128@yahoo.com', 'United States', 'yG0RSco46T', 'us');
 INSERT INTO user (id, created, is_company, name, surname, identity_number, email, country, password, language) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 0, 'Kobe', 'Mo', '85877367', 'Kob.VALENZU1995@mail2web.com', 'United States', '4HqI8SjqmG', 'us');

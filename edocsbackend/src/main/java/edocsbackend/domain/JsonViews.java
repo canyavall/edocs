@@ -7,11 +7,25 @@ import com.fasterxml.jackson.annotation.JsonView;
  */
 public interface JsonViews {
 
-	interface Categories {
-	}
+	//Basics
+	interface BasicUser {}	
+	interface BasicDocument {}	
+	interface BasicCategory {}	
+	interface BasicTransaction {}
+	interface BasicContact {}
 	
-	interface Category {
-		
-	}
+	//Complements	
+	interface TargetCategoryTransaction extends BasicTransaction {}	
+	interface OriginUserTransaction extends BasicTransaction {}
+	
+	//Lists	
+	interface Categories extends BasicCategory{}	
+	interface Users extends BasicUser {}
+	
+	//Specific
+	interface UserSend extends TargetCategoryTransaction, BasicDocument {}		
+	interface Category extends BasicUser, OriginUserTransaction, BasicDocument {}
+	
+	
 
 }

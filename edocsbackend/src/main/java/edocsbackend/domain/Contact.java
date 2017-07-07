@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,6 +25,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(exclude = {"id"})
 public class Contact {
 
+	@JsonView(JsonViews.BasicContact.class)
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -36,9 +39,11 @@ public class Contact {
 	@ManyToOne(optional=false)
 	private Category targetCategory;
 	
+	@JsonView(JsonViews.BasicContact.class)
 	@Column(nullable = false, length = 1)
 	private int originStatus;
 	
+	@JsonView(JsonViews.BasicContact.class)
 	@Column(nullable = false, length = 1)
 	private int targetStatus;
 

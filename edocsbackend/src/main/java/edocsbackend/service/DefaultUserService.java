@@ -40,8 +40,8 @@ public class DefaultUserService implements UserService {
 	}
 
 	@Override
-	public List<User> findAllUSersByTypeAndName(Boolean userType, String name) {
-		return userRepository.findByIsCompanyAndNameIgnoreCaseContaining(userType, name);
+	public List<User> findAllUSersByTypeAndName(Boolean userType, String name, String country) {
+		return userRepository.findByIsCompanyAndNameIgnoreCaseContainingAndCountryIgnoreCaseContaining(userType, name, country);
 	}
 
 	@Override

@@ -30,7 +30,7 @@ import lombok.ToString;
 @EqualsAndHashCode(exclude = {"id", "password"})
 public class User {
 
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicUser.class)
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -38,11 +38,11 @@ public class User {
 	@Column(nullable = false, length = 120)
 	private LocalDateTime created = LocalDateTime.now();
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicUser.class)
 	@Column(nullable = false, length = 120)
 	private String name;
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicUser.class)
 	@Column(length = 75)
 	private String surname;
 	
@@ -56,6 +56,7 @@ public class User {
 	@Column(nullable = false, length = 120)
 	private String email;
 	
+	@JsonView(JsonViews.Users.class)
 	@Column(nullable = false, length = 20)
 	private String country;
 	
@@ -69,6 +70,7 @@ public class User {
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List <Category> categories = new ArrayList<>();
 	
+	@JsonView(JsonViews.UserSend.class)
 	@OneToMany(mappedBy="originUser", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List <Transaction> sendTransactions = new ArrayList<>();;
 	

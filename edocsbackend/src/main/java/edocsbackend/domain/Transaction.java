@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.AllArgsConstructor;
@@ -25,43 +26,44 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(exclude = {"id"})
 public class Transaction {
 
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicTransaction.class)
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicTransaction.class)
 	@Column(nullable = false, length = 120)
 	private LocalDateTime created = LocalDateTime.now();
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicTransaction.class)
 	@Column(length = 2000)
 	private String subject;
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicTransaction.class)
 	@Column(length = 120)
 	private LocalDateTime opened;
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicTransaction.class)
 	@Column(nullable = false)
 	private Boolean isSigned;
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicTransaction.class)
 	@Column(nullable = false)
 	private Boolean isArchived;
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicTransaction.class)
 	@Column(nullable = false)
 	private Boolean isRequestedSignature;
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicTransaction.class)
 	@ManyToOne(optional=false)
 	private Document document;
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.OriginUserTransaction.class)
 	@ManyToOne(optional=false)
 	private User originUser;
 	
+	@JsonView(JsonViews.TargetCategoryTransaction.class)
 	@ManyToOne(optional=false)
 	private Category targetCategory;
 
@@ -77,5 +79,13 @@ public class Transaction {
 		this.targetCategory = targetCategory;
 	}
 	
+	@JsonIgnore
+	public User getOriginUser(){
+		return this.originUser;
+	}
 	
+	@JsonIgnore
+	public Category getTargetCategory(){
+		return this.targetCategory;
+	}
 }
