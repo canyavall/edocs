@@ -8,5 +8,5 @@ public interface ContactService {
 	
 	Contact createNewContact(Contact contact);
 	
-	Contact updatecontact (Contact contact);
+	Contact updateContact (Contact contact);
 }

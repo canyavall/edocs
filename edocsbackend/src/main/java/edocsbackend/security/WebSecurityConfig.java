@@ -52,7 +52,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			
 			.mvcMatcher("/contacts/**")
 				.authorizeRequests()
-					.mvcMatchers(GET,  "/contacts/{id}").permitAll() // Get category by id and transactions
+					.mvcMatchers(GET,  "/contacts").permitAll() // Get contacts by user
+					.mvcMatchers(POST,  "/contacts/create").permitAll() // Create new contact for origin and target category
+					.mvcMatchers(PUT,  "/contacts/{id}").permitAll() // Edit a contact
 			.and()
 			.mvcMatcher("/**")
 				.authorizeRequests()

@@ -23,13 +23,15 @@ public class DefaultContactService implements ContactService {
 		return contactRepository.findById(id);
 	}
 
+	@Transactional(readOnly = false)
 	@Override
 	public Contact createNewContact(Contact contact) {
 		return contactRepository.save(contact);
 	}
 
+	@Transactional(readOnly = false)
 	@Override
-	public Contact updatecontact(Contact contact) {
+	public Contact updateContact(Contact contact) {
 		return contactRepository.save(contact);
 	}
 	

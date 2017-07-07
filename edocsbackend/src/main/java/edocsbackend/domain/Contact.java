@@ -33,13 +33,15 @@ public class Contact {
 	@Column(nullable = false, length = 120)
 	private LocalDateTime created = LocalDateTime.now();
 	
+	@JsonView(JsonViews.BasicContact.class)
 	@ManyToOne(optional=false)
 	private Category originCategory;
 	
+	@JsonView(JsonViews.TargetCategoryContact.class)
 	@ManyToOne(optional=false)
 	private Category targetCategory;
 	
-	@JsonView(JsonViews.BasicContact.class)
+	@JsonView(JsonViews.OriginCategoryContact.class)
 	@Column(nullable = false, length = 1)
 	private int originStatus;
 	

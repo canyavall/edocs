@@ -17,15 +17,17 @@ public interface JsonViews {
 	//Complements	
 	interface TargetCategoryTransaction extends BasicTransaction {}	
 	interface OriginUserTransaction extends BasicTransaction {}
+	interface TargetCategoryContact {}
+	interface OriginCategoryContact {}
 	
 	//Lists	
 	interface Categories extends BasicCategory{}	
 	interface Users extends BasicUser {}
+	interface Contacts extends BasicContact, BasicCategory, TargetCategoryContact, OriginCategoryContact {}
 	
 	//Specific
 	interface UserSend extends TargetCategoryTransaction, BasicDocument {}		
 	interface Category extends BasicUser, OriginUserTransaction, BasicDocument {}
 	
 	
-
 }
