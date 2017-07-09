@@ -1,19 +1,19 @@
 //Main
 import React from 'react';
+import { style } from './style';
+
 //Components & Containers
 import Header from '../../containers/Header';
-import Footer from '../Footer'
-//Utils
-import {bodyContainer, greyTitle} from '../../utils/style';
+import Footer from '../../components/Footer'
 
 const Home = () => (
       <div>
         <Header />
         <div >
-          <h1 style={greyTitle}>All your documents in one click</h1>
+          <h1 style={style.greyTitle}>All your documents in one click</h1>
         </div>
-        <div style={bodyContainer}>
-        and here the 3 box
+        <div style={style.wrapper}>
+          Privacy text
         </div>
         <Footer />
       </div>

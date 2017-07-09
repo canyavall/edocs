@@ -8,10 +8,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import {BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
 import store from './service/store'
 
-
-
 //Routes
-import Home from './components/Home';
+import Home from './routes/Home';
+import Faq from './routes/Faq';
+import Privacy from './routes/Privacy';
+import Login from './routes/Login'
 
 //Others
 import './index.css';
@@ -30,6 +31,9 @@ ReactDOM.render(
               <Router>
                 <Switch>
                   <Route exact path="/" component={ Home } />
+                  <Route exact path="/faq" component={ Faq } />
+                  <Route exact path="/privacy" component={ Privacy } />
+                  <Route exact path="/login" component={ Login } />
                 </Switch>
               </Router>
             </Provider>
