@@ -82,4 +82,9 @@ public class DefaultUserService implements UserService {
 		return userRepository.findContactInfo(id);
 	}
 
+	@Override
+	public User checkLogin(String identityNumber, String password) {
+		return userRepository.findByIdentityNumberAndPassword(identityNumber, password);
+	}
+
 }

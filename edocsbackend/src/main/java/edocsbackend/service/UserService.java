@@ -24,4 +24,6 @@ public interface UserService {
 	User updateCategory(Category category);
 	
 	User addSendingTransaction(Transaction transaction);
+	
+	User checkLogin (String identityNumber, String password);
 }

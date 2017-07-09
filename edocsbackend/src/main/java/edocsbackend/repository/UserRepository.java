@@ -24,4 +24,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 			+ "ca.user = us.id AND "
 			+ "(co.originCategory = ca.id OR co.targetCategory = ca.id)")
 	List <Contact> findContactInfo(Long id);
+	
+	User findByIdentityNumberAndPassword(String IdentifyNumber, String Password);
 }
