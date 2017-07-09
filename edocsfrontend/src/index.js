@@ -8,6 +8,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import {BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
 import store from './service/store'
 
+
+
 //Routes
 import Home from './components/Home';
 
@@ -16,10 +18,12 @@ import './index.css';
 
 const muiTheme = getMuiTheme({
     palette: {
-        primary1Color: '#ffa31a',
+        primary1Color: '#ffffff',
+        textColor: '#ffa31a'
     },
 });
 
+injectTapEventPlugin();
 ReactDOM.render(
           <MuiThemeProvider muiTheme={muiTheme}>
             <Provider store = {store}>

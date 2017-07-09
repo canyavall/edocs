@@ -1,13 +1,21 @@
+//Main
 import React from 'react';
-import Header from '../containers/Header';
-import {bodyContainer} from './style';
+//Components & Containers
+import Header from '../../containers/Header';
+import Footer from '../Footer'
+//Utils
+import {bodyContainer, greyTitle} from '../../utils/style';
 
 const Home = () => (
       <div>
         <Header />
-        <div style={bodyContainer}>
-          Welcome to edocs!
+        <div >
+          <h1 style={greyTitle}>All your documents in one click</h1>
         </div>
+        <div style={bodyContainer}>
+        and here the 3 box
+        </div>
+        <Footer />
       </div>
 )
 

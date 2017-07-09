@@ -1,51 +1,48 @@
+//Main
 import React from 'react';
-import { AppBar } from 'material-ui';
-import FlatButton from 'material-ui/FlatButton';
-import { Link } from 'react-router-dom';
-import {barButtonStyle} from '../components/style';
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import { userLogout } from '../actions/currentuser'
-import Avatar from 'material-ui/Avatar';
-import HomeIcon from 'material-ui/svg-icons/action/home';
-import ChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
-import People from 'material-ui/svg-icons/social/people';
-import LogOut from 'material-ui/svg-icons/image/adjust';
-import {black} from 'material-ui/styles/colors';
 
-const style = {
-  icon: {
-    color: 'white',
-    marginRight: '20px',
-    width: '40px',
-    height: '40px '
-  },
-  avatar: {
-    marginRight: '20px'
-  }
-}
+//Material-ui
+import { AppBar } from 'material-ui';
+import LogOut from 'material-ui/svg-icons/image/adjust';
+import { black } from 'material-ui/styles/colors';
+import FlatButton from 'material-ui/FlatButton';
+
+//Actions
+import { userLogout } from '../../actions/currentuser'
+
+//Utils
+import { barButtonStyle, icon, navbar } from '../../utils/style';
+import logo from '../../img/edoc_medium.jpg'
+
+
 class Header extends React.Component {
 
   render () {
     const rightButtonsLogged = (
         <div>
-            <LogOut onClick={ this.logOut } style={style.icon} hoverColor={black}/>
+            <LogOut onClick={ this.logOut } style={icon} hoverColor={black}/>
         </div>
       );
 
     const rightButtonsNotLogged = (
         <div>
-            <Link to="/"><FlatButton label="Home" style={barButtonStyle} /></Link>
-            <Link to="/login"><FlatButton label="Login" style={barButtonStyle} /></Link>
+            <Link to="/"><FlatButton label="Companies" style={barButtonStyle} /></Link>
+            <Link to="/login"><FlatButton label="Users" style={barButtonStyle} /></Link>
+            <Link to="/login"><FlatButton label="Help" style={barButtonStyle} /></Link>
+            <FlatButton label="en" style={barButtonStyle} />
         </div>
       );
 
     const rightButtons = (this.props.currentuser.token !== null) ?  rightButtonsLogged : rightButtonsNotLogged;
         return <div>
           <AppBar
-            title="Welcome to edOcs"
-            showMenuIconButton={ false }
-            iconElementRight ={ rightButtons }
+            iconElementLeft = { <img src={logo} alt="Edocs Logo"/> }
+            showMenuIconButton = { true }
+            iconElementRight = { rightButtons }
+            style = { navbar }
           >
           </AppBar>
         </div>;

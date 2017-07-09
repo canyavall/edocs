@@ -1,0 +1,3 @@
+//Current User
+export const GET_CURRENTUSER = 'GET_CURRENTUSER';
+export const LOGOUT_CURRENTUSER = 'LOGOUT_CURRENTUSER';
