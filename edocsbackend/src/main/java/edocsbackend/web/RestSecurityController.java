@@ -23,9 +23,9 @@ public class RestSecurityController {
 		this.userService = userService;
 	}
 	
-	@JsonView(JsonViews.BasicUser.class)
+	@JsonView(JsonViews.ProfileUser.class)
 	@PostMapping("/login")
-	public User RestRetrieveUsers(@RequestBody Map<String, String> json){
+	public User RestCheckLogin(@RequestBody Map<String, String> json){
 		return userService.checkLogin(json.get("identityNumber"), json.get("password"));
 	}
 }

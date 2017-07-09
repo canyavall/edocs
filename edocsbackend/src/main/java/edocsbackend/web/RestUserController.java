@@ -63,4 +63,10 @@ public class RestUserController {
 	public List <Transaction> RestRetrieveSendTransactions(@PathVariable Long id){
 		return userService.findUserById(id).getSendTransactions();		
 	}
+	
+	@JsonView(JsonViews.ProfileUser.class)
+	@GetMapping("/profile/{token}")
+	public User RestRetrieveProfile(@PathVariable String token){
+		return userService.findUserByToken(token);		
+	}
 }

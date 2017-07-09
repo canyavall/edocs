@@ -55,7 +55,7 @@ public class UserServiceTest extends AbstractEdocsbackendIntegrationTest{
 	@Test
 	public void createUSer(){
 		assertThat(userRepository.count()).isEqualTo(10);
-		User user = new User("Dead", "Pool", "69696969", false, "deadpool@thebest.com", "USA", "en", "hellokitty");
+		User user = new User("Dead", "Pool", "69696969", false, "deadpool@thebest.com", "USA", "en", "hellokitty", "QFfFP0N3VcpJESSiW4zh");
 		userService.createUser(user);
 		assertThat(userRepository.count()).isEqualTo(11);
 	}

@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 					.mvcMatchers(POST, "/login").permitAll()
 					.mvcMatchers(POST, "/register").permitAll()
-					.mvcMatchers(PUT, "/profile").permitAll()
+					.mvcMatchers(GET, "/profile/{token}").permitAll()
 					.mvcMatchers(GET, "/users").permitAll()
 					.mvcMatchers(GET, "/sent/{id}").permitAll()
 			.and()
@@ -63,8 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
-			.csrf()
-				.disable()
+
 			.httpBasic();
 		// @formatter:on
 	}

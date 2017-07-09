@@ -46,13 +46,15 @@ public class User {
 	@Column(length = 75)
 	private String surname;
 	
+	@JsonView(JsonViews.ProfileUser.class)
 	@Column(nullable = false, name="identity_number", length = 10, unique = true)
 	private String identityNumber;
 	
-	@JsonView(JsonViews.Category.class)
+	@JsonView(JsonViews.BasicUser.class)
 	@Column(name = "is_company", nullable = false, length = 1)
 	private Boolean isCompany;
 	
+	@JsonView(JsonViews.ProfileUser.class)
 	@Column(nullable = false, length = 120)
 	private String email;
 	
@@ -60,11 +62,16 @@ public class User {
 	@Column(nullable = false, length = 20)
 	private String country;
 	
+	@JsonView(JsonViews.ProfileUser.class)
 	@Column(nullable = false, length = 2)
 	private String language;
 	
 	@Column(nullable = false, length = 20)
 	private String password;
+		
+	@JsonView(JsonViews.ProfileUser.class)
+	@Column(nullable = false, length = 20)
+	private String token;
 	
 	@JsonView(JsonViews.Categories.class)
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval=true)
@@ -75,7 +82,7 @@ public class User {
 	private List <Transaction> sendTransactions = new ArrayList<>();;
 	
 	public User(String name, String surname, String identityNumber, Boolean isCompany, String email, String country,
-			String language, String password, List<Category> categories, List<Transaction> sendTransactions) {
+			String language, String password, String token, List<Category> categories, List<Transaction> sendTransactions) {
 		this.name = name;
 		this.surname = surname;
 		this.identityNumber = identityNumber;
@@ -86,10 +93,11 @@ public class User {
 		this.password = password;
 		this.categories = categories;
 		this.sendTransactions = sendTransactions;
+		this.token = token;
 	}
 	
 	public User(String name, String surname, String identityNumber, Boolean isCompany, String email, String country,
-			String language, String password) {
+			String language, String password, String token) {
 		this.name = name;
 		this.surname = surname;
 		this.identityNumber = identityNumber;
@@ -98,6 +106,7 @@ public class User {
 		this.country = country;
 		this.language = language;
 		this.password = password;
+		this.token = token;
 	}
 	
 	public void addSendTransaction (Transaction transaction){

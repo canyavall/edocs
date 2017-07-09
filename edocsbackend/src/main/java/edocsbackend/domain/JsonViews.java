@@ -19,6 +19,7 @@ public interface JsonViews {
 	interface OriginUserTransaction extends BasicTransaction {}
 	interface TargetCategoryContact {}
 	interface OriginCategoryContact {}
+	interface ProfileUser extends BasicUser {}
 	
 	//Lists	
 	interface Categories extends BasicCategory{}	

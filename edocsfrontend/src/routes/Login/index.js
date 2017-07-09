@@ -19,14 +19,14 @@ class Login extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      identifier: '',
+      identityNumber: '',
       password: ''
     }
   }
 
   changeIdentifier = (e) => {
-    const identifier = e.currentTarget.value;
-    this.setState({ identifier });
+    const identityNumber = e.currentTarget.value;
+    this.setState({ identityNumber });
   }
 
   changePassword = (e) => {

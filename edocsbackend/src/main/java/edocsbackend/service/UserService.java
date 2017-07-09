@@ -26,4 +26,6 @@ public interface UserService {
 	User addSendingTransaction(Transaction transaction);
 	
 	User checkLogin (String identityNumber, String password);
+	
+	User findUserByToken(String token);
 }

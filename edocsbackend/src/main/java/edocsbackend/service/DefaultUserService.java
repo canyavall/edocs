@@ -87,4 +87,9 @@ public class DefaultUserService implements UserService {
 		return userRepository.findByIdentityNumberAndPassword(identityNumber, password);
 	}
 
+	@Override
+	public User findUserByToken(String token) {
+		return userRepository.findByToken(token);
+	}
+
 }

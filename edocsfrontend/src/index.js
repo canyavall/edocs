@@ -12,7 +12,8 @@ import store from './service/store'
 import Home from './routes/Home';
 import Faq from './routes/Faq';
 import Privacy from './routes/Privacy';
-import Login from './routes/Login'
+import Login from './routes/Login';
+import Inbox from './routes/Inbox'
 
 //Others
 import './index.css';
@@ -34,6 +35,7 @@ ReactDOM.render(
                   <Route exact path="/faq" component={ Faq } />
                   <Route exact path="/privacy" component={ Privacy } />
                   <Route exact path="/login" component={ Login } />
+                  <Route exact path="/inbox" component={ Inbox } />
                 </Switch>
               </Router>
             </Provider>

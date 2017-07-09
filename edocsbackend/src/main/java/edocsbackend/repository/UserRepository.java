@@ -26,4 +26,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	List <Contact> findContactInfo(Long id);
 	
 	User findByIdentityNumberAndPassword(String IdentifyNumber, String Password);
+	
+	User findByToken (String token);
 }

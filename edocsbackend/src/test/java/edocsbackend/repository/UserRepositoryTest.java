@@ -23,7 +23,7 @@ public class UserRepositoryTest extends AbstractEdocsbackendIntegrationTest {
 	@Test
 	public void testAddUser(){
 		assertThat(repo.count()).isEqualTo(10);
-		User user = new User("Dead", "Pool", "69696969", false, "deadpool@thebest.com", "USA", "en", "hellokitty");
+		User user = new User("Dead", "Pool", "69696969", false, "deadpool@thebest.com", "USA", "en", "hellokitty", "QFfFP0N3VcpJESSiW4zh");
 		repo.save(user);
 		assertThat(repo.count()).isEqualTo(11);
 		assertThat(repo.findById(11L).getName()).isEqualTo("Dead");
