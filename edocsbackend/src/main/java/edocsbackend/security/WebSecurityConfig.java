@@ -67,7 +67,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				
 			.csrf()
 				.disable()
-				
+			.cors()
+				.and()
 			.httpBasic();
 		// @formatter:on
 	}
@@ -76,10 +77,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurerAdapter() {
 
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**");
-			}
+		    @Override
+		    public void addCorsMappings(CorsRegistry registry) {
+		        registry.addMapping("/**").allowedOrigins("*");
+		    }
+		
 		};
 	}
 

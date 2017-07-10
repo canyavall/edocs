@@ -1,3 +1,8 @@
 //Current User
 export const GET_CURRENTUSER = 'GET_CURRENTUSER';
 export const LOGOUT_CURRENTUSER = 'LOGOUT_CURRENTUSER';
+
+//Categories
+export const GET_CATEGORIES = 'GET_CATEGORIES';
+export const GET_CATEGORY = 'GET_CATEGORY';
+export const SAVE_CURRENT_CATEGORY = 'SAVE_CURRENT_CATEGORY';

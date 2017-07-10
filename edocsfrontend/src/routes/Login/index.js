@@ -38,7 +38,7 @@ class Login extends React.Component {
     e.preventDefault();
     this.props.dispatch(checkLogin(this.state))
       .then(() => {
-        if (this.props.currentuser.token.length > 0) this.props.history.push("/inbox");
+        if (this.props.currentuser.token != null) this.props.history.push("/inbox");
     });
   }
 

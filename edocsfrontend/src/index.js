@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {BrowserRouter as  Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter as  Router, Route, Switch, Redirect  } from 'react-router-dom';
 import store from './service/store'
 
 //Routes
@@ -15,15 +15,38 @@ import Privacy from './routes/Privacy';
 import Login from './routes/Login';
 import Inbox from './routes/Inbox'
 
-//Others
+//actions
+import { loginCurrentUser } from './actions/currentuser';
+
+//utils
 import './index.css';
 
+
+// Check localstorage to get the data from the user
+function getToken() {
+  const StorageCurrentUser = {
+    token: localStorage.getItem('userToken'),
+    id: localStorage.getItem('userId'),
+  }
+  const action = loginCurrentUser(StorageCurrentUser);
+  store.dispatch(action);
+}
+getToken();
+
+//Check user is logged
+function isLoggedIn() {
+  if (store.getState().currentuser.token !== null) return true;
+  return false;
+}
+
+//Set muitheme
 const muiTheme = getMuiTheme({
     palette: {
         primary1Color: '#ffffff',
         textColor: '#ffa31a'
     },
 });
+
 
 injectTapEventPlugin();
 ReactDOM.render(
@@ -35,7 +58,7 @@ ReactDOM.render(
                   <Route exact path="/faq" component={ Faq } />
                   <Route exact path="/privacy" component={ Privacy } />
                   <Route exact path="/login" component={ Login } />
-                  <Route exact path="/inbox" component={ Inbox } />
+                  <Route exact path="/inbox" render={() => (isLoggedIn() ? (<Inbox />) : (<Redirect to="/login"/>))}/>
                 </Switch>
               </Router>
             </Provider>

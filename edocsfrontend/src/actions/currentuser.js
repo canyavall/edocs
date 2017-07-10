@@ -13,25 +13,22 @@ export const userLogout = () => {
 }
 
 export const checkLogin = ({ identityNumber, password }) => (dispatch, getState) => {
-  const headers = { 'Accept': 'application/json',
-                    'Content-type': 'application/json'
-                  }
+  const headers = { 'Content-type': 'application/json; charset=utf-8' }
   const body = { identityNumber, password }
   const config = {
     method: 'POST',
     headers: headers,
     body: JSON.stringify(body)
   };
-  console.log(config);
-  return fetch("http://localhost:8080/security/login", config)
+  return fetch("http://localhost:8080/user/login", config)
     .then(res => {
       if (res.status === 200) return res.json();
         return res.status;
     })
     .then(user => {
-      if (user !== false){
+      if (user !== null){
         localStorage.setItem('userToken', user.token);
-        localStorage.setItem('userId', user.token);
+        localStorage.setItem('userId', user.id);
         const action = loginCurrentUser(user);
         dispatch(action);
       }
