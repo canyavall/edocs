@@ -11,6 +11,7 @@ export const style = {
       color: '#ffa31a',
       marginRight: '20px',
       width: '40px',
-      height: '40px'
+      height: '40px',
+      marginTop: '30px'
   }
 };

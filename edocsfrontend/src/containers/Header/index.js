@@ -8,8 +8,15 @@ import { style } from './style';
 //Material-ui
 import { AppBar } from 'material-ui';
 import LogOut from 'material-ui/svg-icons/image/adjust';
+import Account from 'material-ui/svg-icons/action/account-box';
 import { black } from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import Contacts from 'material-ui/svg-icons/communication/contacts';
+import Archive from 'material-ui/svg-icons/content/archive';
+import Inbox from 'material-ui/svg-icons/content/inbox';
+import Send from 'material-ui/svg-icons/content/send';
+
 
 //Actions
 import { userLogout } from '../../actions/currentuser'
@@ -26,31 +33,39 @@ class Header extends React.Component {
   }
 
   render () {
-    const rightButtonsLogged = (
-        <div>
-            <LogOut onClick={ this.logOut } style={style.icon} hoverColor={black}/>
-        </div>
-      );
+    let tabBar = "";
+    let rightButtons = (
+      <div>
+        <Link to="/login"><FlatButton label="Companies" style={style.barButtonStyle} /></Link>
+        <Link to="/login"><FlatButton label="Users" style={style.barButtonStyle} /></Link>
+        <Link to="/faq"><FlatButton label="FAQ" style={style.barButtonStyle} /></Link>
+        <FlatButton label="en" style={style.barButtonStyle} />
+      </div>
+    );
 
-    const rightButtonsNotLogged = (
-        <div>
-            <Link to="/login"><FlatButton label="Companies" style={style.barButtonStyle} /></Link>
-            <Link to="/login"><FlatButton label="Users" style={style.barButtonStyle} /></Link>
-            <Link to="/faq"><FlatButton label="FAQ" style={style.barButtonStyle} /></Link>
-            <FlatButton label="en" style={style.barButtonStyle} />
-        </div>
-      );
-
-    const rightButtons = (this.props.currentuser.token !== null) ?  rightButtonsLogged : rightButtonsNotLogged;
-        return <div>
-          <AppBar
-            iconElementLeft = { <img src={logo} alt="Edocs Logo"/> }
-            showMenuIconButton = { true }
-            iconElementRight = { rightButtons }
-            style = { style.navbar }
-          >
-          </AppBar>
-        </div>;
+    if (this.props.currentuser.token !== null){
+      rightButtons = (<div>
+                        <Link to="/profile"><Account style={style.icon} hoverColor={black}/></Link>
+                        <LogOut onClick={ this.logOut } style={style.icon} hoverColor={black}/>
+                      </div>
+                     );
+      tabBar =  (<div>
+                  <RaisedButton label="Inbox" style={{marginLeft: "50px", marginRight: "1px"}} icon={<Inbox />}/>
+                  <RaisedButton label="Sent"  style={{ marginRight: "1px"}} icon={<Send />}/>
+                  <RaisedButton label="Archive" style={{ marginRight: "1px"}} icon={<Archive />}/>
+                  <RaisedButton label="Contacts" icon={<Contacts />}/>
+                </div>);
+    }
+    return <div>
+            <AppBar
+              iconElementLeft = { <img src={logo} alt="Edocs Logo"/> }
+              showMenuIconButton = { true }
+              iconElementRight = { rightButtons }
+              style = { style.navbar }
+            >
+            </AppBar>
+            { tabBar }
+          </div>;
   }
 
 }
