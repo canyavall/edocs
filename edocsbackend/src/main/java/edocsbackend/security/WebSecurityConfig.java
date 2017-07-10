@@ -17,7 +17,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -32,13 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
 		http
-			.mvcMatcher("/**")
+			.mvcMatcher("/user/**")
 				.authorizeRequests()
-					.mvcMatchers(POST, "/login").permitAll()
-					.mvcMatchers(POST, "/register").permitAll()
-					.mvcMatchers(GET, "/profile/{token}").permitAll()
-					.mvcMatchers(GET, "/users").permitAll()
-					.mvcMatchers(GET, "/sent/{id}").permitAll()
+					.mvcMatchers(POST, "user/login").permitAll()
+					.mvcMatchers(POST, "user/register").permitAll()
+					.mvcMatchers(GET, "user/profile/{token}").permitAll()
+					.mvcMatchers(GET, "user/users").permitAll()
+					.mvcMatchers(GET, "user/sent/{id}").permitAll()
 			.and()
 
 			.mvcMatcher("/categories/**")
@@ -56,14 +55,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.mvcMatchers(POST,  "/contacts/create").permitAll() // Create new contact for origin and target category
 					.mvcMatchers(PUT,  "/contacts/{id}").permitAll() // Edit a contact
 			.and()
+			
 			.mvcMatcher("/**")
 				.authorizeRequests()
 					.mvcMatchers("/**").denyAll()
 			.and()
+			
 			.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
-
+				
+			.csrf()
+				.disable()
+				
 			.httpBasic();
 		// @formatter:on
 	}

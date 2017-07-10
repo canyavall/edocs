@@ -12,15 +12,18 @@ export const userLogout = () => {
   return { type: LOGOUT_CURRENTUSER }
 }
 
-export const checkLogin = ({ identifier, password }) => (dispatch, getState) => {
-  const headers = { 'Content-type': 'application/json' }
-  const body = { identifier, password }
+export const checkLogin = ({ identityNumber, password }) => (dispatch, getState) => {
+  const headers = { 'Accept': 'application/json',
+                    'Content-type': 'application/json'
+                  }
+  const body = { identityNumber, password }
   const config = {
     method: 'POST',
     headers: headers,
     body: JSON.stringify(body)
   };
-  return fetch("http://localhost:8080/login", config)
+  console.log(config);
+  return fetch("http://localhost:8080/security/login", config)
     .then(res => {
       if (res.status === 200) return res.json();
         return res.status;

@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -20,9 +22,10 @@ import edocsbackend.domain.User;
 import edocsbackend.service.UserService;
 
 @RestController
+@RequestMapping("/user")
 public class RestUserController {
 
-	UserService userService;
+	private final UserService userService;
 	
 	@Autowired
 	public RestUserController (UserService userService){
@@ -68,5 +71,12 @@ public class RestUserController {
 	@GetMapping("/profile/{token}")
 	public User RestRetrieveProfile(@PathVariable String token){
 		return userService.findUserByToken(token);		
+	}
+	
+	@JsonView(JsonViews.ProfileUser.class)
+	@PostMapping("/login")
+	public User RestCheckLogin(@RequestBody Map<String, String> json){
+		System.out.println(json.get("identityNumber"));
+		return userService.checkLogin(json.get("identityNumber"), json.get("password"));
 	}
 }
