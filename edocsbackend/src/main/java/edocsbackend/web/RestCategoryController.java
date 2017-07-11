@@ -48,11 +48,13 @@ public class RestCategoryController {
 	}
 	
 	//Expects {"userId": ?userId, "name": ?name }
+	@JsonView(JsonViews.Categories.class)
 	@PostMapping("/create")
-	public void createCategory(@RequestBody Map<String, String> json){
-		User user = userService.findUserById(Long.parseLong( json.get( "userId" ) ));
+	public Category createCategory(@RequestBody Map<String, String> json, @RequestHeader Long userId){		
+		User user = userService.findUserById(userId);
 		Category category = new Category(json.get("name"), false, user);
 		userService.addUserCategory(category);
+		return category;		
 	}
 	
 	//Expects {"name": ?name}

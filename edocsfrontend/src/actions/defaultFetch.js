@@ -13,6 +13,7 @@ export const defaultFecthGet = (action, url, method, body) => (dispatch, getStat
   //   }
   // };
   const userId = getState().currentuser.id;
+  const finalUrl = "http://localhost:8080"+url;
   let config = {
     method: method,
     headers: {
@@ -25,7 +26,7 @@ export const defaultFecthGet = (action, url, method, body) => (dispatch, getStat
     config.headers['Content-type'] = 'application/json';
   }
 
-  return fetch(url, config)
+  return fetch(finalUrl, config)
     .then(res => {
       if (res.status === 200) return res.json();
         return res.status;

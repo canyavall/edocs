@@ -15,8 +15,10 @@ import Send from 'material-ui/svg-icons/action/exit-to-app';
 import RequestResend from 'material-ui/svg-icons/action/swap-horiz';
 import Archive from 'material-ui/svg-icons/content/archive';
 import Mail from 'material-ui/svg-icons/content/mail';
+import Inbox from 'material-ui/svg-icons/content/inbox';
 import CircularProgress from 'material-ui/CircularProgress';
 import Settings from 'material-ui/svg-icons/action/settings-applications';
+import Dialog from 'material-ui/Dialog';
 import {
   Table,
   TableBody,
@@ -27,6 +29,7 @@ import {
 } from 'material-ui/Table';
 
 const orangecolor = '#EF6C00';
+const blackcolor = '#000000';
 
 const Transactions = (props) => {
 
@@ -38,7 +41,12 @@ const Transactions = (props) => {
   if (currentCategoryInfo === undefined || currentCategoryInfo.transactions === undefined )
         return <CircularProgress size={60} thickness={7}/>;
   const transactions = currentCategoryInfo.transactions;
+  const archiveInbox = (isArchive) ?
+                        <Inbox style = { style.iconStyle } hoverColor={orangecolor} /> :
+                        <Archive style = { style.iconStyle } hoverColor={orangecolor} />;
+
   return (
+
     <div style = { style.boxStyle }>
         <Paper style = { style.paperStyle }>
           {categoryList.map((category) => {
@@ -47,7 +55,7 @@ const Transactions = (props) => {
                                  style={{marginLeft: "auto", marginRight: "1px"}}
                                  />
           })}
-          <Settings style= { style.settingsIconStyle }/>
+          <Settings style= { style.settingsIconStyle } hoverColor={blackcolor}/>
           <div >
             <div style ={ style.inlineDiv }>
               <View style = { style.iconStyle } hoverColor={orangecolor} />
@@ -57,7 +65,7 @@ const Transactions = (props) => {
             </div>
             <div style = { style.topTableRightIcons }>
               <Send style = { style.iconStyle } hoverColor={orangecolor} />
-              <Archive style = { style.iconStyle } hoverColor={orangecolor} />
+              { archiveInbox }
             </div>
           </div>
           <Paper >

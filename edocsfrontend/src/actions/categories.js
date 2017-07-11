@@ -1,5 +1,9 @@
 import { defaultFecthGet } from './defaultFetch';
-import { GET_CATEGORIES, GET_CATEGORY, SAVE_CURRENT_CATEGORY} from './defaultActionConstants';
+import { GET_CATEGORIES,
+         GET_CATEGORY,
+         SAVE_CURRENT_CATEGORY,
+         CREATE_CATEGORY
+       } from './defaultActionConstants';
 
 
 export const getCategories = (categories) => {
@@ -22,10 +26,22 @@ export const saveCurrentCategory = (categoryId) => {
     content: categoryId
   }
 }
+
+export const createCategory = (category) => {
+  return {
+    type: CREATE_CATEGORY,
+    content: category
+  }
+}
+
 export const getCategoryList = () => {
-  return defaultFecthGet(getCategories,"http://localhost:8080/categories", "GET");
+  return defaultFecthGet(getCategories,"/categories", "GET");
 }
 
 export const getCategoryinfo = (id) => {
-  return defaultFecthGet(getCategory,"http://localhost:8080/categories/"+id, "GET");
+  return defaultFecthGet(getCategory,"/categories/"+id, "GET");
+}
+
+export const createNewCategory = (name) => {
+  return defaultFecthGet(createCategory, "/categories/create", "POST", name)
 }
