@@ -46,7 +46,6 @@ const Transactions = (props) => {
                         <Archive style = { style.iconStyle } hoverColor={orangecolor} />;
 
   return (
-
     <div style = { style.boxStyle }>
         <Paper style = { style.paperStyle }>
           {categoryList.map((category) => {
