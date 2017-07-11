@@ -5,7 +5,7 @@ import React from 'react';
 import Maincategories from '../../containers/Maincategories'
 
 const Inbox = () => {
-  return <Maincategories isArchive = { false } />
+  return <Maincategories isArchive = { true } />
 }
 
 export default Inbox;

@@ -14,6 +14,7 @@ import Faq from './routes/Faq';
 import Privacy from './routes/Privacy';
 import Login from './routes/Login';
 import Inbox from './routes/Inbox'
+import Archive from './routes/Archive'
 
 //actions
 import { loginCurrentUser } from './actions/currentuser';
@@ -43,7 +44,7 @@ function isLoggedIn() {
 const muiTheme = getMuiTheme({
     palette: {
         primary1Color: '#ffffff',
-        textColor: '#ffa31a'
+        textColor: '#EF6C00'
     },
 });
 
@@ -59,6 +60,7 @@ ReactDOM.render(
                   <Route exact path="/privacy" component={ Privacy } />
                   <Route exact path="/login" component={ Login } />
                   <Route exact path="/inbox" render={() => (isLoggedIn() ? (<Inbox />) : (<Redirect to="/login"/>))}/>
+                  <Route exact path="/archive" render={() => (isLoggedIn() ? (<Archive />) : (<Redirect to="/login"/>))}/>
                 </Switch>
               </Router>
             </Provider>

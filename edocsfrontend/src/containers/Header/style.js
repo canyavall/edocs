@@ -8,7 +8,6 @@ export const style = {
     height:"100px"
   },
   'icon': {
-      color: '#ffa31a',
       marginRight: '20px',
       width: '40px',
       height: '40px',

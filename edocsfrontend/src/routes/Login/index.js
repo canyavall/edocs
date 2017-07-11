@@ -10,6 +10,7 @@ import Key from 'material-ui/svg-icons/communication/vpn-key';
 
 //Containers and components
 import Header from '../../containers/Header';
+import Footer from '../../components/Footer'
 
 //Actions
 import {checkLogin} from '../../actions/currentuser'
@@ -44,24 +45,25 @@ class Login extends React.Component {
 
   render () {
     return (<div>
-      <div>
-        <Header isLoggedIn={this.props.isLoggedIn}/>
-      </div>
-      <div style= {style.wrapper}>
-        <Paper style={style.paperStyle} zDepth={2}>
-            <div>
-              <form onSubmit={ this.submitForm }>
-                <input type="text" placeholder="Identifier" onChange={ this.changeIdentifier } />
-                <Person style={{marginTop:'29px', marginLeft:'-50px', position:'absolute', color:'Grey'}}/>
-                <input type="password" placeholder="Password" onChange={ this.changePassword } />
-                <Key style={{marginTop:'31px', marginLeft:'-50px', position:'absolute', color:'Grey'}}/>
-                <input type="submit" />
-                <input type="button" value="Register" id="registerButton"/>
-              </form>
-            </div>
-        </Paper>
-      </div>
-    </div>)
+              <Header isLoggedIn={this.props.isLoggedIn}/>
+              <div style= {style.wrapper}>
+                <Paper style={style.paperStyle} zDepth={2}>
+                    <div>
+                      <form onSubmit={ this.submitForm }>
+                        <input type="text" placeholder="Identifier" onChange={ this.changeIdentifier } />
+                        <Person style={{marginTop:'29px', marginLeft:'-50px', position:'absolute', color:'Grey'}}/>
+                        <input type="password" placeholder="Password" onChange={ this.changePassword } />
+                        <Key style={{marginTop:'31px', marginLeft:'-50px', position:'absolute', color:'Grey'}}/>
+                        <input type="submit" />
+                        <input type="button" value="Register" id="registerButton"/>
+                      </form>
+                    </div>
+                </Paper>
+              </div>
+              <Footer />
+          </div>
+
+  )
   }
 }
 

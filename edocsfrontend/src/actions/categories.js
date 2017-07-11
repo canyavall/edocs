@@ -9,10 +9,10 @@ export const getCategories = (categories) => {
   }
 }
 
-export const getCategory = (categoryId, transactions) => {
+export const getCategory = (transactions) => {
   return {
     type: GET_CATEGORY,
-    content: { "categoryId": categoryId, "transactions": transactions }
+    content: transactions
   }
 }
 
@@ -23,7 +23,7 @@ export const saveCurrentCategory = (categoryId) => {
   }
 }
 export const getCategoryList = () => {
-  return defaultFecthGet(getCategories,"http://localhost:8080/categories", "GET") ;
+  return defaultFecthGet(getCategories,"http://localhost:8080/categories", "GET");
 }
 
 export const getCategoryinfo = (id) => {

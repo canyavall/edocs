@@ -33,7 +33,7 @@ input[type="button"]{
     width: 90%;
     padding: 3%;
     background: #ffad33;
-    border-bottom: 2px solid #ff9900;
+    border-bottom: 2px solid #EF6C00;
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;
@@ -41,7 +41,7 @@ input[type="button"]{
 }
 input[type="submit"]:hover,
 input[type="button"]:hover{
-    background: #ff9900;
+    background: #EF6C00;
 }
 
 hr{
@@ -52,6 +52,9 @@ a {
   color: inherit;
 }
 
+svg {
+  color: #EF6C00;
+}
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */
