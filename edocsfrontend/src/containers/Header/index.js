@@ -50,9 +50,9 @@ class Header extends React.Component {
                       </div>
                      );
       tabBar =  (<div>
-                  <RaisedButton label="Inbox" style={{marginLeft: "50px", marginRight: "1px"}} icon={<Inbox />}/>
-                  <RaisedButton label="Sent"  style={{ marginRight: "1px"}} icon={<Send />}/>
-                  <RaisedButton label="Archive" style={{ marginRight: "1px"}} icon={<Archive />}/>
+                  <Link to="/inbox"><RaisedButton label="Inbox" style={ style.menuIconFirs } icon={<Inbox />}/></Link>
+                  <RaisedButton label="Sent"  style={ style.menuIcon } icon={<Send />}/>
+                  <Link to="/archive"><RaisedButton label="Archive" style={ style.menuIcon } icon={<Archive />}/></Link>
                   <RaisedButton label="Contacts" icon={<Contacts />}/>
                 </div>);
     }

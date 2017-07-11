@@ -12,5 +12,12 @@ export const style = {
       width: '40px',
       height: '40px',
       marginTop: '30px'
+  },
+  'menuIconFirs': {
+    marginLeft: "50px",
+    marginRight: "1px"
+  },
+  'menuIcon': {
+    marginRight: "1px"
   }
 };

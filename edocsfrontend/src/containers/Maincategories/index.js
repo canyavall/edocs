@@ -40,7 +40,7 @@ class Inbox extends React.Component {
       <Header />
       <div style={style.wrapper}>
         <SearchBox />
-        <Categories categories={ categories } isArchive = { true }/>
+        <Categories categories={ categories } isArchive = { this.props.isArchive }/>
       </div>
       <Footer />
     </div>
