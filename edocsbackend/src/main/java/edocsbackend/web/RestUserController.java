@@ -1,5 +1,6 @@
 package edocsbackend.web;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -61,10 +62,16 @@ public class RestUserController {
 		return userService.findAllUSersByTypeAndName(isCompany, name, country);
 	}
 	
+	//THis must be changed, but I'm out of time....
 	@JsonView(JsonViews.UserSend.class)
 	@GetMapping("/sent/{id}")
 	public List <Transaction> RestRetrieveSendTransactions(@PathVariable Long id){
-		return userService.findUserById(id).getSendTransactions();		
+		User user = userService.findUserById(id);
+		List <Transaction> transactions = user.getSendTransactions();
+		for (int i = 0; i < transactions.size(); i++) {
+			transactions.get(i).setOriginUser(user);
+		}
+		return transactions;		
 	}
 	
 	@JsonView(JsonViews.ProfileUser.class)

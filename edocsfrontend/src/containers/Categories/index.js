@@ -48,8 +48,11 @@ const Transactions = (props) => {
   return (
     <div style = { style.boxStyle }>
         <Paper style = { style.paperStyle }>
-          <CategoryButtonList categoryList = { categoryList }  changeCurrentCategory = { props.changeCurrentCategory } />
-          <CategoryButtonAdd />
+          <CategoryButtonList categoryList = { categoryList }
+                              changeCurrentCategory = { props.changeCurrentCategory }
+                              currentCategory = { currentCategory }
+                              />
+          <CategoryButtonAdd categoryList = { categoryList }/>
           <div >
             <div style ={ style.inlineDiv }>
               <View style = { style.iconStyle } hoverColor={orangecolor} />

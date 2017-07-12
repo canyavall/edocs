@@ -13,7 +13,9 @@ export const style = {
       height: '40px',
       marginTop: '30px'
   },
-  'menuIconFirs': {
+  'menuIconFirst': {
+    color: "#ffffff",
+    backgroundColor: '#000000',
     marginLeft: "50px",
     marginRight: "1px"
   },

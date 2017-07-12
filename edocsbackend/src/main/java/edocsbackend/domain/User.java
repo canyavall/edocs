@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="user")
-@ToString(exclude="password")
+@ToString(exclude={"password", "sendTransactions", "categories"})
 @EqualsAndHashCode(exclude = {"id", "password"})
 public class User {
 

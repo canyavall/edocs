@@ -9,14 +9,11 @@ import { style } from './style';
 import { AppBar } from 'material-ui';
 import LogOut from 'material-ui/svg-icons/image/adjust';
 import Account from 'material-ui/svg-icons/action/account-box';
-import { black } from 'material-ui/styles/colors';
+import { blackcolor } from '../../utils/constants'
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import Contacts from 'material-ui/svg-icons/communication/contacts';
-import Archive from 'material-ui/svg-icons/content/archive';
-import Inbox from 'material-ui/svg-icons/content/inbox';
-import Send from 'material-ui/svg-icons/content/send';
 
+//Categories and Containers
+import HeaderButtons from '../../components/HeaderButtons';
 
 //Actions
 import { userLogout } from '../../actions/currentuser'
@@ -45,16 +42,13 @@ class Header extends React.Component {
 
     if (this.props.currentuser.token !== null){
       rightButtons = (<div>
-                        <Link to="/profile"><Account style={style.icon} hoverColor={black}/></Link>
-                        <LogOut onClick={ this.logOut } style={style.icon} hoverColor={black}/>
+                        <Link to="/profile">
+                          <Account style={ style.icon } hoverColor={ blackcolor }/>
+                        </Link>
+                        <LogOut onClick={ this.logOut } style={ style.icon } hoverColor={ blackcolor }/>
                       </div>
                      );
-      tabBar =  (<div>
-                  <Link to="/inbox"><RaisedButton label="Inbox" style={ style.menuIconFirs } icon={<Inbox />}/></Link>
-                  <RaisedButton label="Sent"  style={ style.menuIcon } icon={<Send />}/>
-                  <Link to="/archive"><RaisedButton label="Archive" style={ style.menuIcon } icon={<Archive />}/></Link>
-                  <RaisedButton label="Contacts" icon={<Contacts />}/>
-                </div>);
+      tabBar =  <HeaderButtons location = { this.props.location.pathname }/>
     }
     return <div>
             <AppBar
