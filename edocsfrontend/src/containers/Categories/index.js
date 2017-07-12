@@ -4,57 +4,52 @@ import find from 'lodash/find';
 import { style } from './style';
 
 //Components & Containers
+import CategoryButtonAdd from '../../components/CategoryButtonAdd';
+import { orangecolor } from '../../utils/constants'
+import TransactionTable from '../../components/TransactionTable';
+import CategoryButtonList from '../../components/CategoryButtonList';
 
 //material ui
 import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
 import View from 'material-ui/svg-icons/action/visibility';
 import Download from 'material-ui/svg-icons/file/cloud-download';
 import Print from 'material-ui/svg-icons/action/print';
 import Send from 'material-ui/svg-icons/action/exit-to-app';
-import RequestResend from 'material-ui/svg-icons/action/swap-horiz';
 import Archive from 'material-ui/svg-icons/content/archive';
 import Mail from 'material-ui/svg-icons/content/mail';
 import Inbox from 'material-ui/svg-icons/content/inbox';
 import CircularProgress from 'material-ui/CircularProgress';
-import Settings from 'material-ui/svg-icons/action/settings-applications';
-import Dialog from 'material-ui/Dialog';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
-
-const orangecolor = '#EF6C00';
-const blackcolor = '#000000';
 
 const Transactions = (props) => {
-
+  //Prepare constants
   const categoryList = props.categories.categoryList;
   const currentCategory = props.categories.currentCategory;
   const isArchive = props.isArchive;
-  const currentCategoryInfo = find(categoryList, ['id', currentCategory]);
-
-  if (currentCategoryInfo === undefined || currentCategoryInfo.transactions === undefined )
-        return <CircularProgress size={60} thickness={7}/>;
-  const transactions = currentCategoryInfo.transactions;
   const archiveInbox = (isArchive) ?
                         <Inbox style = { style.iconStyle } hoverColor={orangecolor} /> :
                         <Archive style = { style.iconStyle } hoverColor={orangecolor} />;
+  const currentCategoryInfo = find(categoryList, ['id', currentCategory]);
+  const loader = (<div style = { style.boxStyle }>
+                    <Paper style = { style.paperStyle }>
+                      <CircularProgress size={60} thickness={7}/>
+                    </Paper>
+                  </div>)
 
+  //Check data
+  if (currentCategoryInfo === undefined) return loader;
+  if (currentCategoryInfo.transactions === undefined){
+        props.categoryInfo();
+        return loader;
+  }
+
+  const transactions = currentCategoryInfo.transactions;
+
+  //Render
   return (
     <div style = { style.boxStyle }>
         <Paper style = { style.paperStyle }>
-          {categoryList.map((category) => {
-            return <RaisedButton label={ category.name }
-                                 key = { category.id }
-                                 style={{marginLeft: "auto", marginRight: "1px"}}
-                                 />
-          })}
-          <Settings style= { style.settingsIconStyle } hoverColor={blackcolor}/>
+          <CategoryButtonList categoryList = { categoryList }  changeCurrentCategory = { props.changeCurrentCategory } />
+          <CategoryButtonAdd />
           <div >
             <div style ={ style.inlineDiv }>
               <View style = { style.iconStyle } hoverColor={orangecolor} />
@@ -68,30 +63,7 @@ const Transactions = (props) => {
             </div>
           </div>
           <Paper >
-          <Table multiSelectable={true}>
-            <TableHeader>
-              <TableRow>
-                <TableHeaderColumn>Received</TableHeaderColumn>
-                <TableHeaderColumn>Subject</TableHeaderColumn>
-                <TableHeaderColumn>Company</TableHeaderColumn>
-                <TableHeaderColumn>Resend Req.</TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
-            <TableBody showRowHover={true}>
-            { transactions.map((transaction) => {
-                            if (transaction.isArchived === isArchive) {
-                              const reqSignature = (transaction.isRequestedSignature) ? <RequestResend /> : '';
-                              return <TableRow key={ transaction.id }>
-                                        <TableRowColumn>01/01/2017</TableRowColumn>
-                                        <TableRowColumn>{ transaction.subject }</TableRowColumn>
-                                        <TableRowColumn>{ transaction.originUser.name } { transaction.originUser.surname }</TableRowColumn>
-                                        <TableRowColumn>{reqSignature}</TableRowColumn>
-                                      </TableRow>
-                                  }
-                                  return '';
-                          })}}
-            </TableBody>
-          </Table>
+            <TransactionTable transactions = { transactions } isArchived = { isArchive } />
           </Paper>
         </Paper>
     </div>

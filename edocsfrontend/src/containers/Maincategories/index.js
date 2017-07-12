@@ -15,7 +15,8 @@ import CircularProgress from 'material-ui/CircularProgress';
 //actions
 import { getCategoryList,
          saveCurrentCategory,
-         getCategoryinfo } from '../../actions/categories';
+         getCategoryinfo
+        } from '../../actions/categories';
 
 class Inbox extends React.Component {
 
@@ -27,9 +28,17 @@ class Inbox extends React.Component {
       this.props.dispatch(getCategoryList())
         .then(res => {
           if (this.props.categories.currentCategory === null) this.props.dispatch(saveCurrentCategory(null));
-        }).then(res => {
-          this.props.dispatch(getCategoryinfo(this.props.categories.currentCategory));
         });
+  }
+
+  //Function that change the currentcatergoy for the one clocked on
+  changeCurrentCategory = (categoryId) => {
+    this.props.dispatch(saveCurrentCategory(categoryId));
+  }
+
+  //Get the category info
+  categoryInfo = () => {
+    this.props.dispatch(getCategoryinfo(this.props.categories.currentCategory));
   }
 
   render () {
@@ -40,7 +49,11 @@ class Inbox extends React.Component {
       <Header />
       <div style={style.wrapper}>
         <SearchBox />
-        <Categories categories={ categories } isArchive = { this.props.isArchive }/>
+        <Categories categories={ categories }
+                    isArchive = { this.props.isArchive }
+                    changeCurrentCategory = { this.changeCurrentCategory }
+                    categoryInfo = { this.categoryInfo }
+                    />
       </div>
       <Footer />
     </div>

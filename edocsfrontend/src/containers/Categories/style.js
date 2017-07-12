@@ -23,9 +23,5 @@ export const style = {
   'topTableRightIcons': {
     marginLeft: '73%',
     display: 'inline-block'
-  },
-  'settingsIconStyle': {
-    marginLeft: '10px',
-    marginTop: '0',
-  },
+  }
 };
