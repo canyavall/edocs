@@ -7,7 +7,7 @@ import { style } from './style';
 import Header from '../../containers/Header';
 import Footer from '../../components/Footer';
 import SearchBox from '../../containers/SearchBox';
-import Categories from '../../containers/Categories';
+import Categories from '../../components/Categories';
 
 //material ui
 import CircularProgress from 'material-ui/CircularProgress';
@@ -18,7 +18,7 @@ import { getCategoryList,
          getCategoryinfo
         } from '../../actions/categories';
 
-class Inbox extends React.Component {
+class Maincategories extends React.Component {
 
   componentWillMount() {
     //Check we have the categories, if we don't ask the server
@@ -67,4 +67,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(Inbox);;
+export default connect(mapStateToProps)(Maincategories);

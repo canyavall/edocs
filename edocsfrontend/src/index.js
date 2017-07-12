@@ -16,6 +16,7 @@ import Login from './routes/Login';
 import Inbox from './routes/Inbox';
 import Archive from './routes/Archive';
 import Sent from './routes/Sent';
+import Contacts from './routes/Contacts';
 
 //actions
 import { loginCurrentUser } from './actions/currentuser';
@@ -63,6 +64,7 @@ ReactDOM.render(
                   <Route exact path="/inbox" render={() => (isLoggedIn() ? (<Inbox />) : (<Redirect to="/login"/>))}/>
                   <Route exact path="/archive" render={() => (isLoggedIn() ? (<Archive />) : (<Redirect to="/login"/>))}/>
                   <Route exact path="/sent" render={() => (isLoggedIn() ? (<Sent />) : (<Redirect to="/login"/>))}/>
+                  <Route exact path="/contacts" render={() => (isLoggedIn() ? (<Contacts />) : (<Redirect to="/login"/>))}/>
                 </Switch>
               </Router>
             </Provider>

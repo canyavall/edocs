@@ -2,10 +2,10 @@
 import React from 'react';
 
 //Components & Containers
-import Maincategories from '../../containers/Maincategories'
+import MainContacts from '../../containers/MainContacts'
 
 const Contacts = () => {
-  return <Maincategories isArchive = { false } />
+  return <MainContacts />
 }
 
 export default Contacts;
