@@ -13,7 +13,6 @@ const initialUser = {
 
 const currentuser = (state = initialUser, action) => {
   switch (action.type) {
-
     case GET_CURRENTUSER:
       const newState = { ...state }
       newState.id = action.content.id;

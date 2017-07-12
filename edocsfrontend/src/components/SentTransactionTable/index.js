@@ -28,12 +28,10 @@ const TransactionTable = (props) => {
                             return <TableRow key={ transaction.id }>
                                       <TableRowColumn>01/01/2017</TableRowColumn>
                                       <TableRowColumn>{ transaction.subject }</TableRowColumn>
-                                      <TableRowColumn>Helsana</TableRowColumn>
+                                      <TableRowColumn>Batman</TableRowColumn>
                                       <TableRowColumn>{reqSignature}</TableRowColumn>
                                     </TableRow>
-                                }
-                                return '';
-                        })}}
+                        })}
           </TableBody>
         </Table>
 }

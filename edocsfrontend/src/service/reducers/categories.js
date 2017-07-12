@@ -7,7 +7,7 @@ const initialState = {
   "categoryList": null
 }
 const currentuser = (state = initialState, action) => {
-  const newState = { ...state };
+  let newState = { ...state };
   switch (action.type) {
 
     case GET_CATEGORIES:

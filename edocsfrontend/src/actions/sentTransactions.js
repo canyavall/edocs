@@ -8,7 +8,6 @@ export const getSentTransactionsAction = (categories) => {
   }
 }
 
-
 export const getSentTransactionsThunk = (id) => {
-  return defaultFecthGet(getCategory,"/categories/"+id, "GET");
+  return defaultFecthGet(getSentTransactionsAction,"/user/sent/"+id, "GET");
 }

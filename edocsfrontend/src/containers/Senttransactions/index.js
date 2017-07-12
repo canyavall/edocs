@@ -7,7 +7,7 @@ import { style } from './style';
 import Header from '../../containers/Header';
 import Footer from '../../components/Footer';
 import SearchBox from '../../containers/SearchBox';
-import TransactionTable from '../../components/TransactionTable';
+import SentTransactionTable from '../../components/SentTransactionTable';
 
 //material ui
 import CircularProgress from 'material-ui/CircularProgress';
@@ -21,15 +21,13 @@ import Paper from 'material-ui/Paper';
 import { orangecolor } from '../../utils/constants';
 
 //actions
-import { getCategoryList,
-         saveCurrentCategory,
-         getCategoryinfo
-        } from '../../actions/categories';
+import { getSentTransactionsThunk } from '../../actions/sentTransactions';
 
 class Senttransactions extends React.Component {
 
   componentWillMount() {
-
+    if (this.props.senttransactions === null )
+      this.props.dispatch(getSentTransactionsThunk(this.props.currentuser.id));
   }
 
   render () {
@@ -50,7 +48,7 @@ class Senttransactions extends React.Component {
                   <Print style = { style.iconStyle } hoverColor={orangecolor} />
                 </div>
                 <Paper >
-                  
+                  <SentTransactionTable transactions = { this.props.senttransactions } />
                 </Paper>
               </Paper>
               </div>
@@ -62,6 +60,7 @@ class Senttransactions extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    currentuser: state.currentuser,
     senttransactions: state.senttransactions
   };
 }
