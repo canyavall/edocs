@@ -10,3 +10,6 @@ export const CREATE_CATEGORY = 'CREATE_CATEGORY';
 
 //sent
 export const GET_SENT_TRANSACTIONS = 'GET_SENT_TRANSACTIONS';
+
+//contacts
+export const GET_CONTACTS = 'GET_CONTACTS';

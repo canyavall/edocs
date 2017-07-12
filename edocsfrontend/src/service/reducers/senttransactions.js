@@ -1,7 +1,7 @@
 import { GET_SENT_TRANSACTIONS } from '../../actions/defaultActionConstants';
 
 
-const currentuser = (state = null, action) => {
+const settransaction = (state = null, action) => {
   let newState = { ...state };
   switch (action.type) {
     case GET_SENT_TRANSACTIONS:
@@ -13,4 +13,4 @@ const currentuser = (state = null, action) => {
   }
 }
 
-export default currentuser;
+export default settransaction;

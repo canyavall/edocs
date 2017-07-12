@@ -48,6 +48,7 @@ public class Category {
 	@Column(nullable = false)
 	private Boolean isGeneral;
 	
+	@JsonView(JsonViews.UserCategory.class)
 	@ManyToOne(optional=false)
 	private User user;
 	

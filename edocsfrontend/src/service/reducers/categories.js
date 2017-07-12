@@ -6,7 +6,7 @@ const initialState = {
   "currentCategory": null,
   "categoryList": null
 }
-const currentuser = (state = initialState, action) => {
+const categories = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
 
@@ -32,4 +32,4 @@ const currentuser = (state = initialState, action) => {
   }
 }
 
-export default currentuser;
+export default categories;

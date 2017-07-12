@@ -20,11 +20,12 @@ public interface JsonViews {
 	interface TargetCategoryContact {}
 	interface OriginCategoryContact {}
 	interface ProfileUser extends BasicUser {}
+	interface UserCategory extends BasicCategory {}
 	
 	//Lists	
 	interface Categories extends BasicCategory{}	
 	interface Users extends BasicUser {}
-	interface Contacts extends BasicContact, BasicCategory, TargetCategoryContact, OriginCategoryContact {}
+	interface Contacts extends BasicContact, TargetCategoryContact, OriginCategoryContact, UserCategory, BasicUser {}
 	
 	//Specific
 	interface UserSend extends TargetCategoryTransaction, BasicDocument, BasicCategory {}		
