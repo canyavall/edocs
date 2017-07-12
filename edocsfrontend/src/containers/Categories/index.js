@@ -5,7 +5,6 @@ import { style } from './style';
 
 //Components & Containers
 import CategoryButtonAdd from '../../components/CategoryButtonAdd';
-import { orangecolor } from '../../utils/constants'
 import TransactionTable from '../../components/TransactionTable';
 import CategoryButtonList from '../../components/CategoryButtonList';
 
@@ -19,6 +18,9 @@ import Archive from 'material-ui/svg-icons/content/archive';
 import Mail from 'material-ui/svg-icons/content/mail';
 import Inbox from 'material-ui/svg-icons/content/inbox';
 import CircularProgress from 'material-ui/CircularProgress';
+
+//utils
+import { orangecolor } from '../../utils/constants';
 
 const Transactions = (props) => {
   //Prepare constants

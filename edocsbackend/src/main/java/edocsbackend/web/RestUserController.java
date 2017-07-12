@@ -66,12 +66,7 @@ public class RestUserController {
 	@JsonView(JsonViews.UserSend.class)
 	@GetMapping("/sent/{id}")
 	public List <Transaction> RestRetrieveSendTransactions(@PathVariable Long id){
-		User user = userService.findUserById(id);
-		List <Transaction> transactions = user.getSendTransactions();
-		for (int i = 0; i < transactions.size(); i++) {
-			transactions.get(i).setOriginUser(user);
-		}
-		return transactions;		
+		return userService.findUserById(id).getSendTransactions();		
 	}
 	
 	@JsonView(JsonViews.ProfileUser.class)

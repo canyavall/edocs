@@ -6,10 +6,12 @@ import thunk from 'redux-thunk'; // require the Middleware
 //Reducers
 import currentuser from './reducers/currentuser';
 import categories from './reducers/categories';
+import senttransactions from  './reducers/senttransactions';
 
 const combinedRed = combineReducers({
   currentuser,
-  categories
+  categories,
+  senttransactions
 })
 
 const store = createStore(combinedRed,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));
