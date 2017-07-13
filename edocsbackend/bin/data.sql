@@ -17,7 +17,7 @@ INSERT INTO user (id, created, is_company, name, surname, identity_number, email
 
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 'General', 1, 4);
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 'General', 1, 2);
-INSERT INTO category (id, created, name, is_general, user_id) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 'Tickets', 0, 2);
+INSERT INTO category (id, created, name, is_general, user_id) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 'Cinema Tickets', 0, 2);
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 'General', 1, 6);
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 'Flights', 0, 2);
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (6, {ts '2017-01-01 00:00:00.00'}, 'Flights', 0, 10);
@@ -31,12 +31,15 @@ INSERT INTO category (id, created, name, is_general, user_id) VALUES (13, {ts '2
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (14, {ts '2017-01-01 00:00:00.00'}, 'General', 1, 8);
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (15, {ts '2017-01-01 00:00:00.00'}, 'General', 1, 9);
 INSERT INTO category (id, created, name, is_general, user_id) VALUES (16, {ts '2017-01-01 00:00:00.00'}, 'General', 1, 10);
+INSERT INTO category (id, created, name, is_general, user_id) VALUES (17, {ts '2017-01-01 00:00:00.00'}, 'Health', 0, 2);
 
 INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, 2, 1, 2);
 INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 2, 4, 2, 2);
 INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 13, 14, 3, 1);
 INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 15, 16, 2, 1);
 INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 13, 3, 1, 3);
+INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (6, {ts '2017-01-01 00:00:00.00'}, 5, 6, 1, 3);
+INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (7, {ts '2017-01-01 00:00:00.00'}, 10, 3, 1, 1);
 
 INSERT INTO document (id, created, author_id, path) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, '/docs/doc1.pdf');
 INSERT INTO document (id, created, author_id, path) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 2, '/docs/doc2.pdf');
@@ -51,5 +54,11 @@ INSERT INTO transaction (id, created, document_id, origin_user_id, target_catego
 INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 5,7,9,'Renting contract', null, false, false, true);
 INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (6, {ts '2017-01-01 00:00:00.00'}, 2,1,11,'Working contract', null, false, false, false);
 INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (7, {ts '2017-01-01 00:00:00.00'}, 1,2,11,'Contract for the insurance (Top)', null, false, false, false);
-INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (8, {ts '2017-01-01 00:00:00.00'}, 1,2,15,'Contract for the insurance (Sana)', null, true, true, false);
-INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (9, {ts '2017-01-01 00:00:00.00'}, 1,2,13,'Contract extension (Full)', null, true, true, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (8, {ts '2017-01-01 00:00:00.00'}, 2,2,15,'Contract for the insurance (Sana)', null, true, true, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (9, {ts '2017-01-01 00:00:00.00'}, 3,2,13,'Contract extension (Full)', null, true, true, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (10, {ts '2017-01-01 00:00:00.00'}, 4,6,5,'Flight to Malawi', null, true, true, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (11, {ts '2017-01-01 00:00:00.00'}, 5,6,5,'Flight to San Francisco', null, true, true, true);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (12, {ts '2017-01-01 00:00:00.00'}, 1,10,3,'FilmTicket: Daredevil 3', null, true, false, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (13, {ts '2017-01-01 00:00:00.00'}, 4,10,3,'FilmTicket: Sharknado 55', null, false, true, false);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (14, {ts '2017-01-01 00:00:00.00'}, 3,10,3,'FilmTicket: Give me love', null, true, true, true);
+INSERT INTO transaction (id, created, document_id, origin_user_id, target_category_id, subject, opened, is_signed, is_requested_signature, is_archived) VALUES (15, {ts '2017-01-01 00:00:00.00'}, 5,7,2,'UBS: Monthly report', null, true, true, false);

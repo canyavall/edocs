@@ -41,7 +41,6 @@ class MainContacts extends React.Component {
   }
 
   render () {
-    console.log(this.props);
     const contacts = this.props.contacts;
     if (contacts === null || contacts === undefined)
           return loader;

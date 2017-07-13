@@ -24,11 +24,13 @@ class Maincategories extends React.Component {
     //Check we have the categories, if we don't ask the server
     //then, check if we have a currecntCategory, if not, set as default the general
     //then get the transactions for this category
-    if (this.props.categories.categoryList === null )
+    if (this.props.categories.categoryList === null || this.props.categories.currentCategory === null)
       this.props.dispatch(getCategoryList())
         .then(res => {
-          if (this.props.categories.currentCategory === null) this.props.dispatch(saveCurrentCategory(null));
+          if (this.props.categories.currentCategory === null)
+            this.props.dispatch(saveCurrentCategory(null));
         });
+
   }
 
   //Function that change the currentcatergoy for the one clocked on

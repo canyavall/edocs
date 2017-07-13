@@ -8,7 +8,6 @@ const contacts = (state = null, action) => {
       const contacts = action.content.contacts;
       const currentGeneralCategoryId = action.content.currentGeneralCategoryId;
       let contactList = [];
-      console.log(contacts);
       for (let i = 0; i < contacts.length; i++) {
         let newContact = {};
         newContact['id'] = contacts[i].id;
