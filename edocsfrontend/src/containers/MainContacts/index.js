@@ -7,42 +7,59 @@ import { style } from './style';
 import Header from '../../containers/Header';
 import Footer from '../../components/Footer';
 import SearchBoxContact from '../../containers/SearchBoxContact';
+import ContactFrame from '../../components/ContactFrame';
 
 //material ui
-import CircularProgress from 'material-ui/CircularProgress';
+import Paper from 'material-ui/Paper';
 
 //actions
 import { getContactsListThunk } from '../../actions/contacts';
+import { getCategoryList } from '../../actions/categories';
+
+const loader = (<div>
+                  <Header />
+                  <div style={style.wrapper}>
+                    <SearchBoxContact />
+                    <Paper style = { style.paperStyle }>
+                      LOADING
+                    </Paper>
+                  </div>
+                  <Footer />
+                </div>);
 
 class MainContacts extends React.Component {
 
   componentWillMount() {
-    // if (this.props.categories.categoryList === null )
-    //   this.props.dispatch(getCategoryList())
-    //     .then(res => {
-    //       if (this.props.categories.currentCategory === null) this.props.dispatch(saveCurrentCategory(null));
-    //     });
+    if (this.props.categories.categoryList === null ){
+      this.props.dispatch(getCategoryList())
+        .then(res => {
+          this.props.dispatch(getContactsListThunk());
+        });
+    }else{
+      this.props.dispatch(getContactsListThunk());
+    }
   }
 
   render () {
+    console.log(this.props);
     const contacts = this.props.contacts;
-    if (contacts === null)
-          return <CircularProgress size={60} thickness={7}/>;
+    if (contacts === null || contacts === undefined)
+          return loader;
     return <div>
-      <Header />
-      <div style={style.wrapper}>
-        <SearchBoxContact />
-
-      </div>
-      <Footer />
-    </div>
+            <Header />
+            <div style={style.wrapper}>
+              <SearchBoxContact />
+              <ContactFrame contacts = { contacts }/>
+            </div>
+            <Footer />
+          </div>
   }
-
 }
 
 const mapStateToProps = (state) => {
   return {
-    contacts: state.contacts
+    contacts: state.contacts,
+    categories: state.categories
   };
 }
 

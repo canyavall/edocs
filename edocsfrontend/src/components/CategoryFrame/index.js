@@ -22,7 +22,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 //utils
 import { orangecolor } from '../../utils/constants';
 
-const Transactions = (props) => {
+const CategoryFrame = (props) => {
   //Prepare constants
   const categoryList = props.categories.categoryList;
   const currentCategory = props.categories.currentCategory;
@@ -75,4 +75,4 @@ const Transactions = (props) => {
   )
 }
 
-export default Transactions;
+export default CategoryFrame;

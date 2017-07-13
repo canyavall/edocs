@@ -32,7 +32,16 @@ export const defaultFecthGet = (action, url, method, body) => (dispatch, getStat
         return res.status;
     })
     .then(obj => {
-      if (obj !== false) dispatch(action(obj));
+      if (obj !== false){
+        if (action.name === "getContactsAction"){
+          let generalCategory = null;
+          getState().categories.categoryList.forEach((category)=> (category.isGeneral) ? generalCategory = category.id : "");
+          dispatch(action(obj, generalCategory));
+        }else{
+          dispatch(action(obj));
+        }
+
+      }
     })
     .catch(err => {
           console.log('error: ', err);

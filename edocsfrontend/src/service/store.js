@@ -7,11 +7,13 @@ import thunk from 'redux-thunk'; // require the Middleware
 import currentuser from './reducers/currentuser';
 import categories from './reducers/categories';
 import senttransactions from  './reducers/senttransactions';
+import contacts from './reducers/contacts';
 
 const combinedRed = combineReducers({
   currentuser,
   categories,
-  senttransactions
+  senttransactions,
+  contacts
 })
 
 const store = createStore(combinedRed,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));

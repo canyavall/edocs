@@ -7,7 +7,7 @@ import { style } from './style';
 import Header from '../../containers/Header';
 import Footer from '../../components/Footer';
 import SearchBox from '../../containers/SearchBox';
-import Categories from '../../components/Categories';
+import CategoryFrame from '../../components/CategoryFrame';
 
 //material ui
 import CircularProgress from 'material-ui/CircularProgress';
@@ -49,7 +49,7 @@ class Maincategories extends React.Component {
       <Header />
       <div style={style.wrapper}>
         <SearchBox />
-        <Categories categories={ categories }
+        <CategoryFrame categories={ categories }
                     isArchive = { this.props.isArchive }
                     changeCurrentCategory = { this.changeCurrentCategory }
                     categoryInfo = { this.categoryInfo }

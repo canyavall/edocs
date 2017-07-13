@@ -40,8 +40,8 @@ public class RestContactController {
 	
 	@JsonView(JsonViews.Contacts.class)
 	@GetMapping
-	public List<Contact> retrieveUserContacts(@RequestHeader Long id){
-		return userService.findContactInfo(id);
+	public List<Contact> retrieveUserContacts(@RequestHeader Long userId){
+		return userService.findContactInfo(userId);
 	}
 	
 	@PostMapping("/create")
