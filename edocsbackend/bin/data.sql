@@ -43,7 +43,7 @@ INSERT INTO contact (id, created, origin_category_id, target_category_id, origin
 
 INSERT INTO document (id, created, author_id, path) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, 'http://orimi.com/pdf-test.pdf');
 INSERT INTO document (id, created, author_id, path) VALUES (2, {ts '2017-01-01 00:00:00.00'}, 2, 'http://orimi.com/pdf-test.pdf');
-INSERT INTO document (id, created, author_id, path) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 3, 'http://orimi.com/pdf-test.pdff');
+INSERT INTO document (id, created, author_id, path) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 3, 'http://orimi.com/pdf-test.pdf');
 INSERT INTO document (id, created, author_id, path) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 4, 'http://orimi.com/pdf-test.pdf');
 INSERT INTO document (id, created, author_id, path) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 5, 'http://orimi.com/pdf-test.pdf');
 

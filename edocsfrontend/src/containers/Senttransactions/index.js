@@ -13,7 +13,6 @@ import SentTransactionTable from '../../components/SentTransactionTable';
 import CircularProgress from 'material-ui/CircularProgress';
 import View from 'material-ui/svg-icons/action/visibility';
 import Download from 'material-ui/svg-icons/file/cloud-download';
-import Print from 'material-ui/svg-icons/action/print';
 import Mail from 'material-ui/svg-icons/content/mail';
 import Paper from 'material-ui/Paper';
 
@@ -37,14 +36,27 @@ class Senttransactions extends React.Component {
   }
 
   handleRowSelection = (rowIds) => {
-    console.log(rowIds);
     this.setState({
       clickedRowIds: rowIds
     });
   }
 
-  onIconClick = () => {
-    console.log(this.state.clickedRowIds);
+  onCLickView = () => {
+    const transactions = this.props.senttransactions;
+    const rows = this.state.clickedRowIds;
+    const properties = 'scrollbars=1,menubar=0,resizable=1,width=850,height=500';
+    rows.forEach((row) => window.open(transactions[row].document.path,"_blank",'PopUp',row,properties));
+  }
+
+  onClickDownload = () => {
+    const transactions = this.props.senttransactions;
+    const rows = this.state.clickedRowIds;
+    rows.forEach((row) => {
+        var csvUrl = document.createElement('a');
+        csvUrl.href = transactions[row].document.path;
+        csvUrl.download = transactions[row].id;
+        csvUrl.click();
+    })
   }
 
   render () {
@@ -58,10 +70,9 @@ class Senttransactions extends React.Component {
               <div style = { style.boxStyle }>
               <Paper style = { style.paperStyle }>
                 <div style ={ style.inlineDiv }>
-                  <View style = { style.iconStyle } hoverColor={orangecolor} onClick={ this.onIconClick }/>
-                  <Download style = { style.iconStyle } hoverColor={orangecolor} />
-                  <Mail style = { style.iconStyle } hoverColor={orangecolor} />
-                  <Print style = { style.iconStyle } hoverColor={orangecolor} />
+                  <View style = { style.iconStyle } hoverColor={orangecolor} onClick={ this.onCLickView }/>
+                  <Download style = { style.iconStyle } hoverColor={orangecolor} onClick={ this.onClickDownload }/>
+                  <Mail style = { style.iconStyle } hoverColor={orangecolor}/>
                 </div>
                 <Paper >
                   <SentTransactionTable transactions={ this.props.senttransactions }

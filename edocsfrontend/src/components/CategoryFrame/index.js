@@ -12,7 +12,6 @@ import CategoryButtonList from '../../components/CategoryButtonList';
 import Paper from 'material-ui/Paper';
 import View from 'material-ui/svg-icons/action/visibility';
 import Download from 'material-ui/svg-icons/file/cloud-download';
-import Print from 'material-ui/svg-icons/action/print';
 import Send from 'material-ui/svg-icons/action/exit-to-app';
 import Archive from 'material-ui/svg-icons/content/archive';
 import Mail from 'material-ui/svg-icons/content/mail';
@@ -22,15 +21,46 @@ import CircularProgress from 'material-ui/CircularProgress';
 //utils
 import { orangecolor } from '../../utils/constants';
 
-const CategoryFrame = (props) => {
+class CategoryFrame extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+          clickedRowIds: []
+        }
+      }
+
+  handleRowSelection = (rowIds) => {
+    console.log("pe");
+    this.setState({
+      clickedRowIds: rowIds
+    });
+  }
+
+  onCLickView = () => {
+    const rows = this.state.clickedRowIds;
+    const properties = 'scrollbars=1,menubar=0,resizable=1,width=850,height=500';
+    rows.forEach((row) => window.open(this.transactions[row].document.path,"_blank",'PopUp',row,properties));
+  }
+
+  onClickDownload = () => {
+    const rows = this.state.clickedRowIds;
+    rows.forEach((row) => {
+        var csvUrl = document.createElement('a');
+        csvUrl.href = this.transactions[row].document.path;
+        csvUrl.download = this.transactions[row].id;
+        csvUrl.click();
+    })
+  }
+
+  render() {
   //Prepare constants
-  const categoryList = props.categories.categoryList;
-  const currentCategory = props.categories.currentCategory;
-  const isArchive = props.isArchive;
+  this.categoryList = this.props.categories.categoryList;
+  this.currentCategory = this.props.categories.currentCategory;
+  const isArchive = this.props.isArchive;
   const archiveInbox = (isArchive) ?
                         <Inbox style = { style.iconStyle } hoverColor={orangecolor} /> :
                         <Archive style = { style.iconStyle } hoverColor={orangecolor} />;
-  const currentCategoryInfo = find(categoryList, ['id', currentCategory]);
+  this.currentCategoryInfo = find(this.categoryList, ['id', this.currentCategory]);
   const loader = (<div style = { style.boxStyle }>
                     <Paper style = { style.paperStyle }>
                       <CircularProgress size={60} thickness={7}/>
@@ -38,41 +68,45 @@ const CategoryFrame = (props) => {
                   </div>)
 
   //Check data
-  if (currentCategoryInfo === undefined) return loader;
-  if (currentCategoryInfo.transactions === undefined){
-        props.categoryInfo();
+  if (this.currentCategoryInfo === undefined) return loader;
+  if (this.currentCategoryInfo.transactions === undefined){
+        this.props.categoryInfo();
         return loader;
   }
 
-  const transactions = currentCategoryInfo.transactions;
+  this.transactions = this.currentCategoryInfo.transactions;
 
   //Render
   return (
-    <div style = { style.boxStyle }>
-        <Paper style = { style.paperStyle }>
-          <CategoryButtonList categoryList = { categoryList }
-                              changeCurrentCategory = { props.changeCurrentCategory }
-                              currentCategory = { currentCategory }
-                              />
-          <CategoryButtonAdd categoryList = { categoryList }/>
-          <div >
-            <div style ={ style.inlineDiv }>
-              <View style = { style.iconStyle } hoverColor={orangecolor} />
-              <Download style = { style.iconStyle } hoverColor={orangecolor} />
-              <Mail style = { style.iconStyle } hoverColor={orangecolor} />
-              <Print style = { style.iconStyle } hoverColor={orangecolor} />
+      <div style = { style.boxStyle }>
+          <Paper style = { style.paperStyle }>
+            <CategoryButtonList categoryList = { this.categoryList }
+                                changeCurrentCategory = { this.props.changeCurrentCategory }
+                                currentCategory = { this.currentCategory }
+                                />
+            <CategoryButtonAdd categoryList = { this.categoryList }/>
+            <div >
+              <div style ={ style.inlineDiv }>
+                <View style = { style.iconStyle } hoverColor={orangecolor} onClick={ this.onCLickView }/>
+                <Download style = { style.iconStyle } hoverColor={orangecolor} onClick={ this.onClickDownload }/>
+                <Mail style = { style.iconStyle } hoverColor={orangecolor} />
+              </div>
+              <div style = { style.topTableRightIcons }>
+                <Send style = { style.iconStyle } hoverColor={orangecolor} />
+                { archiveInbox }
+              </div>
             </div>
-            <div style = { style.topTableRightIcons }>
-              <Send style = { style.iconStyle } hoverColor={orangecolor} />
-              { archiveInbox }
-            </div>
-          </div>
-          <Paper >
-            <TransactionTable transactions = { transactions } isArchived = { isArchive } />
+            <Paper >
+              <TransactionTable transactions = { this.transactions }
+                                isArchived = { isArchive }
+                                handleRowSelection = { this.handleRowSelection }
+                                clickedRowIds = { this.state.clickedRowIds }
+                                />
+            </Paper>
           </Paper>
-        </Paper>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 export default CategoryFrame;
