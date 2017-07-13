@@ -1,7 +1,7 @@
 export const style = {
   'boxStyle': {
-    height: '50px',
-    margin: '10px'
+    margin: '10px',
+    padding: '10px'
   },
   'greyTitle': {
     marginTop: '30px',
@@ -12,5 +12,14 @@ export const style = {
     width:'75%',
     margin:'50px auto',
     textAlign: 'center'
+  },
+  'titleDiv': {
+    textAlign: 'left',
+    fontSize: '115%'
+  },
+  'textDiv': {
+    textAlign: 'left',
+    fontSize: '90%',
+    marginLeft: '30px'
   }
 }

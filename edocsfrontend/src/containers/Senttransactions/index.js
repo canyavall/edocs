@@ -24,17 +24,33 @@ import { orangecolor } from '../../utils/constants';
 import { getSentTransactionsThunk } from '../../actions/sentTransactions';
 
 class Senttransactions extends React.Component {
+  constructor(props) {
+      super(props)
+      this.state = {
+        clickedRowIds: []
+      }
+    }
 
   componentWillMount() {
     if (this.props.senttransactions === null )
       this.props.dispatch(getSentTransactionsThunk(this.props.currentuser.id));
   }
 
+  handleRowSelection = (rowIds) => {
+    console.log(rowIds);
+    this.setState({
+      clickedRowIds: rowIds
+    });
+  }
+
+  onIconClick = () => {
+    console.log(this.state.clickedRowIds);
+  }
+
   render () {
     const senttransactions = this.props.senttransactions;
     if (senttransactions === null)
           return <CircularProgress size={60} thickness={7}/>;
-
     return <div>
             <Header />
             <div style={style.wrapper}>
@@ -42,13 +58,15 @@ class Senttransactions extends React.Component {
               <div style = { style.boxStyle }>
               <Paper style = { style.paperStyle }>
                 <div style ={ style.inlineDiv }>
-                  <View style = { style.iconStyle } hoverColor={orangecolor} />
+                  <View style = { style.iconStyle } hoverColor={orangecolor} onClick={ this.onIconClick }/>
                   <Download style = { style.iconStyle } hoverColor={orangecolor} />
                   <Mail style = { style.iconStyle } hoverColor={orangecolor} />
                   <Print style = { style.iconStyle } hoverColor={orangecolor} />
                 </div>
                 <Paper >
-                  <SentTransactionTable transactions = { this.props.senttransactions } />
+                  <SentTransactionTable transactions={ this.props.senttransactions }
+                                        onRowSelection={ this.handleRowSelection }
+                                        clickedRowIds={ this.state.clickedRowIds }/>
                 </Paper>
               </Paper>
               </div>
