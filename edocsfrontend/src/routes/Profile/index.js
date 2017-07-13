@@ -6,19 +6,34 @@ import { style } from './style';
 //Components & Containers
 import Header from '../../containers/Header';
 import Footer from '../../components/Footer'
+import { getUserInformationThunk } from '../../actions/currentuser';
 
 //material ui
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 
 class Profile extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      name: '',
+      surname: ''
+    }
+  }
   componentWillMount() {
-    // if (this.props.currentuser.email === undefined )
-    //   this.props.dispatch(getSentTransactionsThunk(this.props.currentuser.id));
+     if (this.props.currentuser.email === undefined )
+       this.props.dispatch(getUserInformationThunk(this.props.currentuser.token));
+  }
+
+  changeValue = (e) => {
+    const identityNumber = e.currentTarget.value;
+    this.setState({ identityNumber });
   }
 
   render (){
-    console.log(this.props);
+    const currentUser = this.props.currentuser;
+    console.log(currentUser);
+    if (currentUser.email === undefined) return <div>"Loading"</div>;
     return (
           <div>
             <Header />
@@ -33,25 +48,25 @@ class Profile extends React.Component {
                       <div id='column1' style = { style.boxStyle }>
                         <div>
                           <div style = { style.labelDateInput }><label htmlFor="name" >Name: </label></div>
-                          <div style = { style.dateInput }><input type="text" id="name" name="name" /></div>
+                          <div style = { style.dateInput }><input type="text" id="name" name="name" value={ currentUser.name } onChange={ this.changeValue }/></div>
                         </div>
                         <div>
                           <div style = { style.labelDateInput }><label htmlFor="name" >Surname: </label></div>
-                          <div style = { style.dateInput }><input type="text" id="surname" name="surname" /></div>
+                          <div style = { style.dateInput }><input type="text" id="surname" name="surname" value={ currentUser.surname } onChange={ this.changeValue }/></div>
                         </div>
                         <div>
-                          <div style = { style.labelDateInput }><label htmlFor="identifier" >Identifier: </label></div>
-                          <div style = { style.dateInput }><input type="text" id="identifier" name="identifier" /></div>
+                          <div style = { style.labelDateInput }><label htmlFor="identifier" >Identity: </label></div>
+                          <div style = { style.dateInput }><input type="text" id="identifier" name="identifier" value={ currentUser.identityNumber } onChange={ this.changeValue }/></div>
                         </div>
                       </div>
                       <div id='column2' style = { style.boxStyle }>
                         <div>
                           <div style = { style.labelDateInput }><label htmlFor="email" >Email: </label></div>
-                          <div style = { style.dateInput }><input type="text" id="email" name="email" /></div>
+                          <div style = { style.dateInput }><input type="text" id="email" name="email" value={ currentUser.email } onChange={ this.changeValue }/></div>
                         </div>
                         <div>
                           <div style = { style.labelDateInput }><label htmlFor="password" >Password: </label></div>
-                          <div style = { style.dateInput }><input type="password" id="password" name="password" /></div>
+                          <div style = { style.dateInput }><input type="password" id="password" name="password" value="********" onChange={ this.changeValue }/></div>
                         </div>
                       </div>
                       <div>
