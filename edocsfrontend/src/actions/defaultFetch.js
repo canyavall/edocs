@@ -33,14 +33,21 @@ export const defaultFecthGet = (action, url, method, body) => (dispatch, getStat
     })
     .then(obj => {
       if (obj !== false){
-        if (action.name === "getContactsAction"){
-          let generalCategory = null;
-          getState().categories.categoryList.forEach((category)=> (category.isGeneral) ? generalCategory = category.id : "");
-          dispatch(action(obj, generalCategory));
-        }else{
-          dispatch(action(obj));
-        }
+        //For some actions we need to do some more things
+        switch (action.name) {
+          case "getContactsAction":
+            let generalCategory = null;
+            getState().categories.categoryList.forEach((category)=> (category.isGeneral) ? generalCategory = category.id : "");
+            dispatch(action(obj, generalCategory));
+            break;
+          case "loginCurrentUserAction":
+            localStorage.setItem('userToken', obj.token);
+            localStorage.setItem('userId', obj.id);
+            break;
 
+          default:
+            dispatch(action(obj));
+        }
       }
     })
     .catch(err => {

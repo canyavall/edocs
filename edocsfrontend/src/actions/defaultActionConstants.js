@@ -1,6 +1,7 @@
 //Current User
 export const GET_CURRENTUSER = 'GET_CURRENTUSER';
 export const LOGOUT_CURRENTUSER = 'LOGOUT_CURRENTUSER';
+export const GET_CURRENTUSER_INFO = 'GET_CURRENTUSER_INFO';
 
 //Categories
 export const GET_CATEGORIES = 'GET_CATEGORIES';

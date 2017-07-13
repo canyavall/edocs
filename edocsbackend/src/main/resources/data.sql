@@ -38,7 +38,7 @@ INSERT INTO contact (id, created, origin_category_id, target_category_id, origin
 INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (3, {ts '2017-01-01 00:00:00.00'}, 13, 14, 3, 1);
 INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (4, {ts '2017-01-01 00:00:00.00'}, 15, 16, 2, 1);
 INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (5, {ts '2017-01-01 00:00:00.00'}, 13, 3, 1, 3);
-INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (6, {ts '2017-01-01 00:00:00.00'}, 5, 6, 1, 3);
+INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (6, {ts '2017-01-01 00:00:00.00'}, 11, 5, 1, 3);
 INSERT INTO contact (id, created, origin_category_id, target_category_id, origin_status, target_status) VALUES (7, {ts '2017-01-01 00:00:00.00'}, 10, 3, 1, 1);
 
 INSERT INTO document (id, created, author_id, path) VALUES (1, {ts '2017-01-01 00:00:00.00'}, 1, '/docs/doc1.pdf');

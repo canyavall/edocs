@@ -13,7 +13,7 @@ import Header from '../../containers/Header';
 import Footer from '../../components/Footer'
 
 //Actions
-import {checkLogin} from '../../actions/currentuser'
+import {checkLoginThunk} from '../../actions/currentuser'
 
 
 class Login extends React.Component {
@@ -37,15 +37,16 @@ class Login extends React.Component {
 
   submitForm = (e) => {
     e.preventDefault();
-    this.props.dispatch(checkLogin(this.state))
+    this.props.dispatch(checkLoginThunk(this.state))
       .then(() => {
+        console.log(this.props);
         if (this.props.currentuser.token != null) this.props.history.push("/inbox");
     });
   }
 
   render () {
     return (<div>
-              <Header isLoggedIn={this.props.isLoggedIn}/>
+              <Header />
               <div style= {style.wrapper}>
                 <Paper style={style.paperStyle} zDepth={2}>
                     <div>

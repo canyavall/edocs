@@ -65,4 +65,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(Senttransactions);;
+export default connect(mapStateToProps)(Senttransactions);

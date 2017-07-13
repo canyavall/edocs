@@ -16,7 +16,7 @@ const SearchBoxContact = () => (
 
             <Divider style= { style.dividerStyle }/>
 
-            <div style={{ textAlign: "left", marginBottom: "30px"}}>
+            <div style={ style.wrapper }>
               Send:
               <div style={{ marginTop: "15px"}}>
                 <input type="checkbox" name="SendAccepted" value="true" style = { style.inputStyle }/>
@@ -32,7 +32,7 @@ const SearchBoxContact = () => (
               </div>
             </div>
 
-            <div style={{ textAlign: "left", marginBottom: "30px"}}>
+            <div style={ style.wrapper }>
               Receive:
               <div style={{ marginTop: "15px"}}>
                 <input type="checkbox" name="ReceiveAccepted" value="true" style = { style.inputStyle }/>

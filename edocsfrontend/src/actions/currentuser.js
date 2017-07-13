@@ -1,39 +1,25 @@
-import { GET_CURRENTUSER, LOGOUT_CURRENTUSER } from './defaultActionConstants';
+import { defaultFecthGet } from './defaultFetch';
+import { GET_CURRENTUSER, LOGOUT_CURRENTUSER, GET_CURRENTUSER_INFO } from './defaultActionConstants';
 
-
-export const loginCurrentUser = (user) => {
+export const loginCurrentUserAction = (user) => {
   return {
     type: GET_CURRENTUSER,
     content: user
   }
 }
 
-export const userLogout = () => {
+export const userLogoutAction = () => {
   return { type: LOGOUT_CURRENTUSER }
 }
 
-export const checkLogin = ({ identityNumber, password }) => (dispatch, getState) => {
-  const headers = { 'Content-type': 'application/json; charset=utf-8' }
-  const body = { identityNumber, password }
-  const config = {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  };
-  return fetch("http://localhost:8080/user/login", config)
-    .then(res => {
-      if (res.status === 200) return res.json();
-        return res.status;
-    })
-    .then(user => {
-      if (user !== null){
-        localStorage.setItem('userToken', user.token);
-        localStorage.setItem('userId', user.id);
-        const action = loginCurrentUser(user);
-        dispatch(action);
-      }
-    })
-    .catch(err => {
-          console.log('error: ', err);
-      });
+export const getUserInfoAction = (user) => {
+  return {
+    type: GET_CURRENTUSER_INFO,
+    content: user
+  }
+}
+
+export const checkLoginThunk = ({ identityNumber, password }) => {
+  const body = { identityNumber, password };
+  return defaultFecthGet(loginCurrentUserAction,"/user/login", "POST", body);
 }

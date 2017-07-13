@@ -30,5 +30,9 @@ export const style = {
   'inlineRedBLock': {
     display: "inline-block",
     color: "red"
+  },
+  'wrapper': { 
+    textAlign: "left",
+    marginBottom: "30px"
   }
 };

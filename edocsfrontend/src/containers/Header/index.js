@@ -16,7 +16,7 @@ import FlatButton from 'material-ui/FlatButton';
 import HeaderButtons from '../../components/HeaderButtons';
 
 //Actions
-import { userLogout } from '../../actions/currentuser'
+import { userLogoutAction } from '../../actions/currentuser'
 
 //Utils
 import logo from '../../img/edoc_medium.jpg'
@@ -25,7 +25,7 @@ class Header extends React.Component {
 
   logOut = () => {
     window.localStorage.clear();
-    this.props.dispatch(userLogout());
+    this.props.dispatch(userLogoutAction());
     this.props.history.push("/");
   }
 

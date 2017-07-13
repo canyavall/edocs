@@ -21,7 +21,8 @@ export const style = {
     display: 'inline-block'
   },
   'topTableRightIcons': {
-    marginLeft: '73%',
+    float: 'right',
+    marginRight: '15px',
     display: 'inline-block'
   }
 };

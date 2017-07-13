@@ -18,18 +18,18 @@ const SearchBox = () => (
             <Divider style= { style.dividerStyle }/>
 
             <div>
-              <label htmlFor="fday">From: </label>
-              <input type="date" id="fday" name="fday" />
+              <div style = { style.labelDateInput }><label htmlFor="fday" >From: </label></div>
+              <div style = { style.dateInput }><input type="date" id="fday" name="fday" /></div>
             </div>
 
             <div>
-              <label htmlFor="tday">To: </label>
-              <input type="date" id="tday" name="tday" />
+              <div style = { style.labelDateInput }><label htmlFor="tday" >To: </label></div>
+              <div style = { style.dateInput }><input type="date" id="tday" name="tday" /></div>
             </div>
 
             <Toggle
               style= { style.dividerStyle }
-              label="Show only 'Required a signal response'"
+              label="Show only 'Requested response'"
               defaultToggled={false}
             />
 

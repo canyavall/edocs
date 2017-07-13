@@ -17,13 +17,13 @@ import Inbox from './routes/Inbox';
 import Archive from './routes/Archive';
 import Sent from './routes/Sent';
 import Contacts from './routes/Contacts';
+import Profile from './routes/Profile';
 
 //actions
-import { loginCurrentUser } from './actions/currentuser';
+import { loginCurrentUserAction } from './actions/currentuser';
 
 //utils
 import './index.css';
-
 
 // Check localstorage to get the data from the user
 function getToken() {
@@ -31,9 +31,9 @@ function getToken() {
     token: localStorage.getItem('userToken'),
     id: localStorage.getItem('userId'),
   }
-  const action = loginCurrentUser(StorageCurrentUser);
-  store.dispatch(action);
+  store.dispatch(loginCurrentUserAction(StorageCurrentUser));
 }
+
 getToken();
 
 //Check user is logged
@@ -50,7 +50,6 @@ const muiTheme = getMuiTheme({
     },
 });
 
-
 injectTapEventPlugin();
 ReactDOM.render(
           <MuiThemeProvider muiTheme={muiTheme}>
@@ -65,6 +64,7 @@ ReactDOM.render(
                   <Route exact path="/archive" render={() => (isLoggedIn() ? (<Archive />) : (<Redirect to="/login"/>))}/>
                   <Route exact path="/sent" render={() => (isLoggedIn() ? (<Sent />) : (<Redirect to="/login"/>))}/>
                   <Route exact path="/contacts" render={() => (isLoggedIn() ? (<Contacts />) : (<Redirect to="/login"/>))}/>
+                  <Route exact path="/profile" render={() => (isLoggedIn() ? (<Profile />) : (<Redirect to="/login"/>))}/>
                 </Switch>
               </Router>
             </Provider>
