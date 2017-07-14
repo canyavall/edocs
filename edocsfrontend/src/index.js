@@ -30,6 +30,8 @@ function getToken() {
   const StorageCurrentUser = {
     token: localStorage.getItem('userToken'),
     id: localStorage.getItem('userId'),
+    name: localStorage.getItem('userName'),
+    surname: localStorage.getItem('userSurname')
   }
   store.dispatch(loginCurrentUserAction(StorageCurrentUser));
 }

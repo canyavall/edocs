@@ -13,6 +13,12 @@ export const style = {
   'wrapper': {
     width:'75%',
     margin:'50px auto',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+    verticalAlign: 'top',
+  },
+  'inlineDiv': {
+    margin: '10px',
+    width: '30%',
+    display: 'inline-block'
+  },
 }

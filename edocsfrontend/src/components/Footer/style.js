@@ -1,3 +1,6 @@
+//utils
+import { orangecolor } from '../../utils/constants'
+
 export const style = {
   'wrapper': {
         textAlign: 'center',
@@ -12,6 +15,10 @@ export const style = {
   'barButtonStyle': {
         marginTop: '5px',
         backgroundColor: 'transparent',
-        color: '#ffa31a'
+        color: orangecolor
+  },
+  'labelButton': {
+      textTransform: 'none',
+      fontSize: '70%'
   }
 }

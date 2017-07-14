@@ -7,9 +7,6 @@ import { style } from './style';
 
 //Material-ui
 import { AppBar } from 'material-ui';
-import LogOut from 'material-ui/svg-icons/image/adjust';
-import Account from 'material-ui/svg-icons/action/account-box';
-import { blackcolor } from '../../utils/constants'
 import FlatButton from 'material-ui/FlatButton';
 
 //Categories and Containers
@@ -30,22 +27,42 @@ class Header extends React.Component {
   }
 
   render () {
+    const fullName = this.props.currentuser.name + " " + this.props.currentuser.surname;
     let tabBar = "";
     let rightButtons = (
       <div>
-        <Link to="/login"><FlatButton label="Companies" style={style.barButtonStyle} /></Link>
-        <Link to="/login"><FlatButton label="Users" style={style.barButtonStyle} /></Link>
-        <Link to="/faq"><FlatButton label="FAQ" style={style.barButtonStyle} /></Link>
-        <FlatButton label="en" style={style.barButtonStyle} />
+        <Link to="/login">
+          <FlatButton label="Companies"
+                      style={style.barButton}
+                      labelStyle={ style.labelButton }/>
+        </Link>
+        <Link to="/login">
+          <FlatButton label="Users"
+                      style={style.barButton}
+                      labelStyle={ style.labelButton } />
+        </Link>
+        <Link to="/faq">
+          <FlatButton label="FAQ"
+                      style={style.barButton}
+                      labelStyle={ style.labelButton }/>
+        </Link>
+        <FlatButton label="en"
+                    style={style.barButton}
+                    labelStyle={ style.labelButton }/>
       </div>
     );
 
     if (this.props.currentuser.token !== null){
       rightButtons = (<div>
                         <Link to="/profile">
-                          <Account style={ style.icon } hoverColor={ blackcolor }/>
+                          <FlatButton label={ fullName }
+                                      style={ style.barButton }
+                                      labelStyle={ style.labelButton }/>
                         </Link>
-                        <LogOut onClick={ this.logOut } style={ style.icon } hoverColor={ blackcolor }/>
+                        <FlatButton label="Log Out"
+                                    style={ style.barButton }
+                                    labelStyle={ style.labelButton }
+                                    onClick={ this.logOut } />
                       </div>
                      );
       tabBar =  <HeaderButtons location = { this.props.location.pathname }/>
@@ -63,7 +80,6 @@ class Header extends React.Component {
   }
 
 }
-
 
 const ComposedWithRouter = withRouter(Header);
 

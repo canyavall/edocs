@@ -46,6 +46,8 @@ export const defaultFecthGet = (action, url, method, body) => (dispatch, getStat
           case "loginCurrentUserAction":
             localStorage.setItem('userToken', obj.token);
             localStorage.setItem('userId', obj.id);
+            localStorage.setItem('userName', obj.name);
+            localStorage.setItem('userSurname', obj.surname);
             dispatch(action(obj));
             break;
 
