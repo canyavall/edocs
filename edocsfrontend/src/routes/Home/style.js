@@ -15,6 +15,7 @@ export const style = {
     margin:'50px auto',
     textAlign: 'center',
     verticalAlign: 'top',
+    display: 'flex'
   },
   'inlineDiv': {
     margin: '10px',

@@ -24,15 +24,17 @@ const Home = () => (
         </div>
         <div style={style.wrapper}>
           <Card style = { style.inlineDiv }>
-            <img src={ img1 } alt="" width="50%"/>
+            <img src={ img1 } alt="" width="80%"/>
             <CardTitle title="What’s EDocs?" />
             <CardText style= {{color: "grey", fontSize:'105%', textAlign:"left"}}>
               <p>eDocs is a system to store all the documents addressed to a user in his unique secure account. </p>
-              <p>Having all documents addressed to the user in the same app will  reduce administration cost and ease the document managing for the user.</p>
+              <p>eDocs allows the user to send documents to his contacts or receive any type of documents from other user or companies.</p>
+              <p>eDocs can be accessed from any device and the user can download or open his documents in his device if os required</p>
+              <p>eDocs is free for the users and, actually, it is used in many countries around the world</p>
             </CardText>
           </Card>
           <Card style = { style.inlineDiv }>
-            <img src={ img2 } alt="" width="50%"/>
+            <img src={ img2 } alt="" width="60%"/>
             <CardTitle title="What can do eDocs for me?" />
             <CardText style= {{color: "grey", fontSize:'105%', textAlign:"left"}}>
             <p>eDocs stores all documents received from another users (companies or persons) in a simple and personalized way.</p>
