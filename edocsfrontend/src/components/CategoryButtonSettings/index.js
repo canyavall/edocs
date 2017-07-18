@@ -15,7 +15,7 @@ import { blackcolor } from '../../utils/constants'
 import CategorySimpleList from '../../components/CategorySimpleList';
 
 
-export default class AddCategoryButton extends React.Component {
+export default class CategoryButtonSettings extends React.Component {
   state = {
     open: false,
   };
@@ -48,6 +48,8 @@ export default class AddCategoryButton extends React.Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
+          <Divider style = { style.dividerStyle }/>
+          <input type="button" value="Create new Category" style = { style.newCategoryButton }/>
           <Divider style = { style.dividerStyle }/>
           <CategorySimpleList categoryList = { this.props.categoryList} />
           <Divider style = { style.dividerStyle }/>

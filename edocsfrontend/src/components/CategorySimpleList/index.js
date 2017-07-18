@@ -1,6 +1,6 @@
 //Main
 import React from 'react';
-
+import { style } from './style'
 //Material ui
 import Edit from 'material-ui/svg-icons/editor/mode-edit';
 import Delete from 'material-ui/svg-icons/action/delete';
@@ -22,18 +22,19 @@ const CategorySimpleList = (props) => {
                         adjustForCheckbox={ false }>
             <TableRow>
               <TableHeaderColumn>Category</TableHeaderColumn>
-              <TableHeaderColumn>Edit</TableHeaderColumn>
-              <TableHeaderColumn>Delete</TableHeaderColumn>
+              <TableHeaderColumn style={ style.tableRow }>Edit</TableHeaderColumn>
+              <TableHeaderColumn style={ style.tableRow }>Delete</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody showRowHover={true}
                      displayRowCheckbox={false}
                      deselectOnClickaway={false}>
           { props.categoryList.map((category) => {
+            if (category.isGeneral) return null;
               return <TableRow key={ category.id }>
                         <TableRowColumn>{ category.name }</TableRowColumn>
-                        <TableRowColumn><Edit hoverColor={blackcolor}/></TableRowColumn>
-                        <TableRowColumn><Delete hoverColor={blackcolor}/></TableRowColumn>
+                        <TableRowColumn style={ style.tableRow }><Edit hoverColor={blackcolor}/></TableRowColumn>
+                        <TableRowColumn style={ style.tableRow }><Delete hoverColor={blackcolor}/></TableRowColumn>
                       </TableRow>
                   }
             )}

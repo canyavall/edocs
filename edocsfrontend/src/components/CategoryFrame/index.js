@@ -4,7 +4,7 @@ import find from 'lodash/find';
 import { style } from './style';
 
 //Components & Containers
-import CategoryButtonAdd from '../../components/CategoryButtonAdd';
+import CategoryButtonSettings from '../../components/CategoryButtonSettings';
 import TransactionTable from '../../components/TransactionTable';
 import CategoryButtonList from '../../components/CategoryButtonList';
 
@@ -84,7 +84,7 @@ class CategoryFrame extends React.Component {
                                 changeCurrentCategory = { this.props.changeCurrentCategory }
                                 currentCategory = { this.currentCategory }
                                 />
-            <CategoryButtonAdd categoryList = { this.categoryList }/>
+            <CategoryButtonSettings categoryList = { this.categoryList }/>
             <div >
               <div style ={ style.inlineDiv }>
                 <View style = { style.iconStyle } hoverColor={orangecolor} onClick={ this.onCLickView }/>

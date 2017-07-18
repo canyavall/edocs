@@ -8,10 +8,9 @@ import Footer from '../../components/Footer'
 
 
 //material ui
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardTitle, CardText} from 'material-ui/Card';
 
 //Utils
-import logo from '../../img/edoc_medium.jpg';
 import img1 from '../../img/img1.JPG';
 import img2 from '../../img/img2.JPG';
 import img3 from '../../img/img3.JPG';

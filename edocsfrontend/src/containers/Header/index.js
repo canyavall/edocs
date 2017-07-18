@@ -69,7 +69,7 @@ class Header extends React.Component {
     }
     return <div>
             <AppBar
-              iconElementLeft = { <img src={logo} alt="Edocs Logo"/> }
+              iconElementLeft = { <Link to="/"><img src={logo} alt="Edocs Logo"/></Link> }
               showMenuIconButton = { true }
               iconElementRight = { rightButtons }
               style = { style.navbar }
