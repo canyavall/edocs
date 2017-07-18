@@ -3,19 +3,11 @@ import React from 'react';
 import { style } from './style';
 
 //Material ui
-import Settings from 'material-ui/svg-icons/action/settings-applications';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
 
-//utils
-import { blackcolor } from '../../utils/constants'
-
-//Components and Containers
-import CategorySimpleList from '../../components/CategorySimpleList';
-
-
-export default class CategoryAdd extends React.Component {
+class CategoryAdd extends React.Component {
   state = {
     open: false,
   };
@@ -28,33 +20,42 @@ export default class CategoryAdd extends React.Component {
     this.setState({open: false});
   };
 
+  handleSaveAndClose = () => {
+    this.props.saveCategory(document.getElementById('newCategory').value)
+    this.setState({open: false});
+  };
+
   render() {
     const actions = [
       <FlatButton
         label="Accept"
-        primary={true}
         keyboardFocused={true}
+        onTouchTap={this.handleSaveAndClose}
+      />,
+      <FlatButton
+        label="Cancel"
+        keyboardFocused={false}
         onTouchTap={this.handleClose}
       />,
     ];
 
     return (
-      <div style = {{display: 'inline-block'}}>
-        <Settings style= { style.settingsIconStyle } hoverColor={blackcolor} onTouchTap={this.handleOpen} />
+      <div style = {{display: 'inline-block', width: "100%"}}>
+        <input type="button" value="Create new Category" style = { style.newCategoryButton } onTouchTap={this.handleOpen}/>
         <Dialog
-          title="Categories"
+          title="Add Category"
           actions={ actions }
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
           <Divider style = { style.dividerStyle }/>
-          <input type="button" value="Create new Category" style = { style.newCategoryButton }/>
-          <Divider style = { style.dividerStyle }/>
-          <CategorySimpleList categoryList = { this.props.categoryList} />
+          <input id="newCategory" type="text" placeholder="Category Name" />
           <Divider style = { style.dividerStyle }/>
         </Dialog>
       </div>
     );
   }
 }
+
+export default CategoryAdd;

@@ -13,7 +13,7 @@ import { blackcolor } from '../../utils/constants'
 
 //Components and Containers
 import CategorySimpleList from '../../components/CategorySimpleList';
-
+import CategoryAdd from '../../containers/CategoryAdd'
 
 export default class CategoryButtonSettings extends React.Component {
   state = {
@@ -49,7 +49,7 @@ export default class CategoryButtonSettings extends React.Component {
           onRequestClose={this.handleClose}
         >
           <Divider style = { style.dividerStyle }/>
-          <input type="button" value="Create new Category" style = { style.newCategoryButton }/>
+          <CategoryAdd />
           <Divider style = { style.dividerStyle }/>
           <CategorySimpleList categoryList = { this.props.categoryList} />
           <Divider style = { style.dividerStyle }/>
