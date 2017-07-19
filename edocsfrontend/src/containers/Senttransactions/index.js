@@ -1,23 +1,9 @@
 //Main
 import React from 'react';
 import { connect } from 'react-redux';
-import { style } from './style';
 
 //Components & Containers
-import Header from '../../containers/Header';
-import Footer from '../../components/Footer';
-import SearchBox from '../../containers/SearchBox';
-import SentTransactionTable from '../../components/SentTransactionTable';
-
-//material ui
-import CircularProgress from 'material-ui/CircularProgress';
-import View from 'material-ui/svg-icons/action/visibility';
-import Download from 'material-ui/svg-icons/file/cloud-download';
-import Mail from 'material-ui/svg-icons/content/mail';
-import Paper from 'material-ui/Paper';
-
-//utils
-import { orangecolor } from '../../utils/constants';
+import SenttransactionsComponent from '../../components/SentTransactions';
 
 //actions
 import { getSentTransactionsThunk } from '../../actions/sentTransactions';
@@ -60,30 +46,13 @@ class Senttransactions extends React.Component {
   }
 
   render () {
-    const senttransactions = this.props.senttransactions;
-    if (senttransactions === null)
-          return <CircularProgress size={60} thickness={7}/>;
-    return <div>
-            <Header />
-            <div style={style.wrapper}>
-              <SearchBox />
-              <div style = { style.boxStyle }>
-              <Paper style = { style.paperStyle }>
-                <div style ={ style.inlineDiv }>
-                  <View style = { style.iconStyle } hoverColor={orangecolor} onClick={ this.onCLickView }/>
-                  <Download style = { style.iconStyle } hoverColor={orangecolor} onClick={ this.onClickDownload }/>
-                  <Mail style = { style.iconStyle } hoverColor={orangecolor}/>
-                </div>
-                <Paper >
-                  <SentTransactionTable transactions={ this.props.senttransactions }
-                                        onRowSelection={ this.handleRowSelection }
-                                        clickedRowIds={ this.state.clickedRowIds }/>
-                </Paper>
-              </Paper>
-              </div>
-              <Footer />
-            </div>
-          </div>
+    console.log(this.props);
+    return <SenttransactionsComponent transactions={ this.props.senttransactions }
+                                      onRowSelection={ this.handleRowSelection }
+                                      clickedRowIds={ this.state.clickedRowIds }
+                                      onCLickView={ this.onCLickView }
+                                      onClickDownload={ this.onClickDownload }
+                                      />
   }
 }
 

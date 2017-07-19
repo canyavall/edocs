@@ -2,10 +2,10 @@
 import React from 'react';
 
 //Components & Containers
-import Senttransactions from '../../containers/Senttransactions'
+import SentTransactions from '../../containers/SentTransactions'
 
 const Sent = () => {
-  return <Senttransactions />
+  return <SentTransactions />
 }
 
 export default Sent;

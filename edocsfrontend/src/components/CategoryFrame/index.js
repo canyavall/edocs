@@ -5,7 +5,7 @@ import { style } from './style';
 
 //Components & Containers
 import CategoryButtonSettings from '../../components/CategoryButtonSettings';
-import TransactionTable from '../../components/TransactionTable';
+import CategoryTransactionTable from '../../components/CategoryTransactionTable';
 import CategoryButtonList from '../../components/CategoryButtonList';
 
 //material ui
@@ -97,7 +97,7 @@ class CategoryFrame extends React.Component {
               </div>
             </div>
             <Paper >
-              <TransactionTable transactions = { this.transactions }
+              <CategoryTransactionTable transactions = { this.transactions }
                                 isArchived = { isArchive }
                                 handleRowSelection = { this.handleRowSelection }
                                 clickedRowIds = { this.state.clickedRowIds }

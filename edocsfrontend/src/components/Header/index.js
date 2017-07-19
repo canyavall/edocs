@@ -1,8 +1,6 @@
 //Main
 import React from 'react';
-import {connect} from 'react-redux'
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import { style } from './style';
 
 //Material-ui
@@ -12,13 +10,10 @@ import FlatButton from 'material-ui/FlatButton';
 //Categories and Containers
 import HeaderButtons from '../../components/HeaderButtons';
 
-//Actions
-import { userLogoutAction } from '../../actions/currentuser'
-
 //Utils
-import logo from '../../img/edoc_medium.jpg'
+import logo from '../../img/edoc_medium.jpg';
 
-class Header = (props) => {
+const Header = (props) => {
   const fullName = props.currentuser.name + " " + props.currentuser.surname;
   let tabBar = "";
   let rightButtons = (
@@ -54,10 +49,10 @@ class Header = (props) => {
                       <FlatButton label="Log Out"
                                   style={ style.barButton }
                                   labelStyle={ style.labelButton }
-                                  onClick={ this.props.logOut } />
+                                  onClick={ props.logOut } />
                     </div>
                    );
-    tabBar =  <HeaderButtons location = { props.location.pathname }/>
+    tabBar =  <HeaderButtons location = { props.pathname }/>
   }
     return <div>
             <AppBar
@@ -69,10 +64,6 @@ class Header = (props) => {
             </AppBar>
             { tabBar }
           </div>;
-  }
-
 }
 
-const ComposedWithRouter = withRouter(Header);
-
-export default ComposedWithRouter;
+export default Header;

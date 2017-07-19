@@ -12,7 +12,7 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
-const TransactionTable = (props) => {
+const CategoryTransactionTable = (props) => {
   const clickedRows = props.clickedRowIds;
   return <Table multiSelectable={true}
                 onRowSelection={ props.handleRowSelection }
@@ -44,4 +44,4 @@ const TransactionTable = (props) => {
         </Table>
 }
 
-export default TransactionTable;
+export default CategoryTransactionTable;

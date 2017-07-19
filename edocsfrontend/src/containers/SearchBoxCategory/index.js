@@ -9,7 +9,7 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import Toggle from 'material-ui/Toggle';
 
-const SearchBox = () => (
+const SearchBoxCategory = () => (
       <div style = { style.boxStyle }>
           <Paper style = { style.paperStyle }>
 
@@ -43,4 +43,4 @@ const SearchBox = () => (
       </div>
 )
 
-export default SearchBox;
+export default SearchBoxCategory;

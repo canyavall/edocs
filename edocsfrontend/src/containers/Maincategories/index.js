@@ -6,7 +6,7 @@ import { style } from './style';
 //Components & Containers
 import Header from '../../containers/Header';
 import Footer from '../../components/Footer';
-import SearchBox from '../../containers/SearchBox';
+import SearchBoxCategory from '../../containers/SearchBoxCategory';
 import CategoryFrame from '../../components/CategoryFrame';
 
 //material ui
@@ -50,7 +50,7 @@ class Maincategories extends React.Component {
     return <div>
       <Header />
       <div style={style.wrapper}>
-        <SearchBox />
+        <SearchBoxCategory />
         <CategoryFrame categories={ categories }
                     isArchive = { this.props.isArchive }
                     changeCurrentCategory = { this.changeCurrentCategory }
