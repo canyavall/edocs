@@ -9,7 +9,6 @@ import SearchBoxCategory from '../../containers/SearchBoxCategory';
 import SentTransactionTable from '../../components/SentTransactionTable';
 
 //material ui
-import CircularProgress from 'material-ui/CircularProgress';
 import View from 'material-ui/svg-icons/action/visibility';
 import Download from 'material-ui/svg-icons/file/cloud-download';
 import Mail from 'material-ui/svg-icons/content/mail';
@@ -18,13 +17,7 @@ import Paper from 'material-ui/Paper';
 //utils
 import { orangecolor } from '../../utils/constants';
 
-//actions
-import { getSentTransactionsThunk } from '../../actions/sentTransactions';
-
 const Senttransactions = (props) => {
-  console.log(props);
-    const senttransactions = props.senttransactions;
-    if (senttransactions === null) return <CircularProgress size={60} thickness={7}/>;
     return <div>
             <Header />
             <div style={style.wrapper}>

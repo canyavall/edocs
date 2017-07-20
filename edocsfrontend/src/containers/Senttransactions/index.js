@@ -8,6 +8,9 @@ import SenttransactionsComponent from '../../components/SentTransactions';
 //actions
 import { getSentTransactionsThunk } from '../../actions/sentTransactions';
 
+//material ui
+import CircularProgress from 'material-ui/CircularProgress';
+
 class Senttransactions extends React.Component {
   constructor(props) {
       super(props)
@@ -46,7 +49,7 @@ class Senttransactions extends React.Component {
   }
 
   render () {
-    console.log(this.props);
+    if (this.props.senttransactions === null) return <CircularProgress size={60} thickness={7}/>;
     return <SenttransactionsComponent transactions={ this.props.senttransactions }
                                       onRowSelection={ this.handleRowSelection }
                                       clickedRowIds={ this.state.clickedRowIds }

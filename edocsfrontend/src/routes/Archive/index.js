@@ -2,10 +2,10 @@
 import React from 'react';
 
 //Components & Containers
-import Maincategories from '../../containers/Maincategories'
+import Categories from '../../containers/Categories'
 
 const Inbox = () => {
-  return <Maincategories isArchive = { true } />
+  return <Categories isArchive = { true } />
 }
 
 export default Inbox;

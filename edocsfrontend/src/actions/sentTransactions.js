@@ -9,6 +9,5 @@ export const getSentTransactionsAction = (categories) => {
 }
 
 export const getSentTransactionsThunk = (id) => {
-  console.log("pe");
   return defaultFecthGet(getSentTransactionsAction,"/user/sent/"+id, "GET");
 }

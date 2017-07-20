@@ -18,7 +18,7 @@ import { getCategoryList,
          getCategoryinfo
         } from '../../actions/categories';
 
-class Maincategories extends React.Component {
+class Categories extends React.Component {
 
   componentWillMount() {
     //Check we have the categories, if we don't ask the server
@@ -69,4 +69,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(Maincategories);
+export default connect(mapStateToProps)(Categories);
