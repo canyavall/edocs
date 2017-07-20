@@ -69,12 +69,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
-			// We filter the api/login requests
-	        .addFilterBefore(new JWTLoginFilter("/user/login", authenticationManager()),
-	                UsernamePasswordAuthenticationFilter.class)
-	        // And filter other requests to check the presence of JWT in header
-	        .addFilterBefore(new JWTAuthenticationFilter(),
-	                UsernamePasswordAuthenticationFilter.class)	
 			.csrf()
 				.disable()
 			.cors()
@@ -86,7 +80,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurerAdapter() {
-
 		    @Override
 		    public void addCorsMappings(CorsRegistry registry) {
 		        registry.addMapping("/**").allowedOrigins("*");
@@ -94,14 +87,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		};
 	}
-	
-	 @Override
-	  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	    // Create a default account
-	    auth.inMemoryAuthentication()
-	        .withUser("admin")
-	        .password("password")
-	        .roles("ADMIN");
-	  }
-
 }
