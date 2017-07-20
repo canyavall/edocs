@@ -2,10 +2,10 @@
 import React from 'react';
 
 //Components & Containers
-import MainContacts from '../../containers/MainContacts'
+import ContactsContainer from '../../containers/Contacts'
 
 const Contacts = () => {
-  return <MainContacts />
+  return <ContactsContainer />
 }
 
 export default Contacts;

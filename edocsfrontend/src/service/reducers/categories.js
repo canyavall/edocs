@@ -1,5 +1,9 @@
 import find from 'lodash/find';
-import { GET_CATEGORIES, GET_CATEGORY, SAVE_CURRENT_CATEGORY} from '../../actions/defaultActionConstants';
+import { GET_CATEGORIES,
+         GET_CATEGORY,
+         SAVE_CURRENT_CATEGORY,
+         CREATE_CATEGORY
+       } from '../../actions/defaultActionConstants';
 
 
 const initialState = {
@@ -25,6 +29,10 @@ const categories = (state = initialState, action) => {
 
     case SAVE_CURRENT_CATEGORY:
       newState.currentCategory = (action.content != null) ? action.content : find(newState.categoryList, ['isGeneral', true]).id;
+      return newState;
+
+    case CREATE_CATEGORY:
+      newState.categoryList.push(action.content)
       return newState;
 
     default:

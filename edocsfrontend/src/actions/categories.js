@@ -27,7 +27,7 @@ export const saveCurrentCategory = (categoryId) => {
   }
 }
 
-export const createCategory = (category) => {
+export const createCategoryAction = (category) => {
   return {
     type: CREATE_CATEGORY,
     content: category
@@ -42,6 +42,7 @@ export const getCategoryinfo = (id) => {
   return defaultFecthGet(getCategory,"/categories/"+id, "GET");
 }
 
-export const createNewCategory = (name) => {
-  return defaultFecthGet(createCategory, "/categories/create", "POST", name)
+export const createNewCategoryThunk = (name) => {
+  const body = { 'name': name }
+  return defaultFecthGet(createCategoryAction, "/categories/create", "POST", body)
 }

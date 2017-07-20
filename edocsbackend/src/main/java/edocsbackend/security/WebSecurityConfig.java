@@ -7,11 +7,13 @@ import static org.springframework.http.HttpMethod.PUT;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -48,7 +50,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.mvcMatchers(DELETE,  "/categories/{id}").permitAll() // Delete category
 					.mvcMatchers(PUT,  "/categories/{id}").permitAll() // Edit category
 			.and()
-			
+			.mvcMatcher("/transactions/**")
+			.authorizeRequests()
+				.mvcMatchers(PUT,  "/archive/{id}").permitAll() // Get all categories (no transactions)
+			.and()
 			.mvcMatcher("/contacts/**")
 				.authorizeRequests()
 					.mvcMatchers(GET,  "/contacts").permitAll() // Get contacts by user
@@ -64,7 +69,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
-				
+			// We filter the api/login requests
+	        .addFilterBefore(new JWTLoginFilter("/user/login", authenticationManager()),
+	                UsernamePasswordAuthenticationFilter.class)
+	        // And filter other requests to check the presence of JWT in header
+	        .addFilterBefore(new JWTAuthenticationFilter(),
+	                UsernamePasswordAuthenticationFilter.class)	
 			.csrf()
 				.disable()
 			.cors()
@@ -84,5 +94,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		};
 	}
+	
+	 @Override
+	  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	    // Create a default account
+	    auth.inMemoryAuthentication()
+	        .withUser("admin")
+	        .password("password")
+	        .roles("ADMIN");
+	  }
 
 }

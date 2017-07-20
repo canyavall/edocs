@@ -1,13 +1,9 @@
 //Main
 import React from 'react';
 import { connect } from 'react-redux';
-import { style } from './style';
 
 //Components & Containers
-import Header from '../../containers/Header';
-import Footer from '../../components/Footer';
-import SearchBoxCategory from '../../containers/SearchBoxCategory';
-import CategoryFrame from '../../components/CategoryFrame';
+import CategoriesComponent from '../../components/Categories';
 
 //material ui
 import CircularProgress from 'material-ui/CircularProgress';
@@ -47,20 +43,12 @@ class Categories extends React.Component {
     const categories = this.props.categories;
     if (categories.categoryList === null && categories.currentCategory === null)
           return <CircularProgress size={60} thickness={7}/>;
-    return <div>
-      <Header />
-      <div style={style.wrapper}>
-        <SearchBoxCategory />
-        <CategoryFrame categories={ categories }
-                    isArchive = { this.props.isArchive }
-                    changeCurrentCategory = { this.changeCurrentCategory }
-                    categoryInfo = { this.categoryInfo }
-                    />
-      </div>
-      <Footer />
-    </div>
+    return <CategoriesComponent categories={ categories }
+                                isArchive = { this.props.isArchive }
+                                changeCurrentCategory = { this.changeCurrentCategory }
+                                categoryInfo = { this.categoryInfo }
+                                />
   }
-
 }
 
 const mapStateToProps = (state) => {

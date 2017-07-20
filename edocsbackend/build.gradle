@@ -36,4 +36,5 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile("org.hibernate:hibernate-java8:${hibernateVersion}")
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
 }

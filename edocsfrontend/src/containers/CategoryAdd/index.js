@@ -5,13 +5,15 @@ import { connect } from 'react-redux';
 //Components and Containers
 import CategoryAddComponent from '../../components/CategoryAdd';
 
+//Actions
+import { createNewCategoryThunk } from '../../actions/categories'
 class CategoryAdd extends React.Component {
   state = {
     open: false,
   };
 
   saveCategory = () => {
-    console.log(document.getElementById('newCategory').value);
+    this.props.dispatch(createNewCategoryThunk(document.getElementById('newCategory').value))
   };
 
   render() {

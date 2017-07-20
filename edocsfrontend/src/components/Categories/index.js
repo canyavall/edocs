@@ -14,15 +14,14 @@ const Categories = (props) => {
             <Header />
             <div style={style.wrapper}>
               <SearchBoxCategory />
-              <CategoryFrame categories={ categories }
-                          isArchive = { this.props.isArchive }
-                          changeCurrentCategory = { this.changeCurrentCategory }
-                          categoryInfo = { this.categoryInfo }
-                          />
+              <CategoryFrame categories={ props.categories }
+                              isArchive = { props.isArchive }
+                              changeCurrentCategory = { props.changeCurrentCategory }
+                              categoryInfo = { props.categoryInfo }
+                              />
             </div>
             <Footer />
           </div>
-
 }
 
 export default Categories;
