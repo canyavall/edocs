@@ -7,7 +7,7 @@ export const style = {
     verticalAlign: 'top'
   },
   'paperStyle': {
-    height: '500px',
+    height: '458px',
     textAlign: 'left'
   },
   'iconStyle': {
@@ -24,5 +24,12 @@ export const style = {
     width:'90%',
     margin:'50px auto',
     textAlign: 'center'
-  }
+  },
+  'topTable': {
+    textAlign: 'left'
+  },
+  'sendDocument': {
+    width: "20%",
+    display: 'inline-block'
+  },
 };

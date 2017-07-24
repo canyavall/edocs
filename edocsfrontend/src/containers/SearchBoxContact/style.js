@@ -2,12 +2,12 @@ export const style = {
   'boxStyle': {
     display: 'inline-block',
     width: '20%',
-    height: '500px',
+    height: '600px',
     margin: '10px',
     verticalAlign: 'top'
   },
   'paperStyle': {
-    height: '500px',
+    height: '541px',
     padding: '20px'
   },
   'dividerStyle': {
@@ -31,7 +31,7 @@ export const style = {
     display: "inline-block",
     color: "red"
   },
-  'wrapper': { 
+  'wrapper': {
     textAlign: "left",
     marginBottom: "30px"
   }

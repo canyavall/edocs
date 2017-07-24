@@ -10,18 +10,30 @@ export const style = {
     height: '500px',
     textAlign: 'left'
   },
-  'iconStyle': {
-    color: '#000000',
-    marginLeft: '20px',
-    width: '30px',
-    height: '30px',
-    marginTop: '20px'
-  },
-  'inlineDiv': {
+  'addContact': {
+    width: "20%",
     display: 'inline-block'
   },
-  'topTableRightIcons': {
-    marginLeft: '73%',
-    display: 'inline-block'
+  'legend': {
+    width: "70%",
+    display: 'inline-block',
+    verticalAlign: 'middle',
+  },
+  'topTable': {
+    textAlign: 'left'
+  },
+  'orangeIcon': {
+    color: 'orange'
+  },
+  'greenIcon': {
+    color: 'green'
+  },
+  'redIcon': {
+    color: 'red'
+  },
+  'legendItems': {
+    marginRight: '25px',
+    display: 'inline-block',
+    color: 'grey'
   }
 };

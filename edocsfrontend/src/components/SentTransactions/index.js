@@ -23,6 +23,11 @@ const Senttransactions = (props) => {
             <div style={style.wrapper}>
               <SearchBoxCategory />
               <div style = { style.boxStyle }>
+              <div style={ style.topTable }>
+                <div style={ style.sendDocument }>
+                  <input type="button" value="Send New Document" />
+                </div>
+              </div>
               <Paper style = { style.paperStyle }>
                 <div style ={ style.inlineDiv }>
                   <View style = { style.iconStyle } hoverColor={orangecolor} onClick={ props.onCLickView }/>
