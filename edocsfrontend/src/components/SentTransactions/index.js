@@ -7,6 +7,8 @@ import Header from '../../containers/Header';
 import Footer from '../../components/Footer';
 import SearchBoxCategory from '../../containers/SearchBoxCategory';
 import SentTransactionTable from '../../components/SentTransactionTable';
+import SentNew from '../SentNew';
+
 
 //material ui
 import View from 'material-ui/svg-icons/action/visibility';
@@ -25,7 +27,7 @@ const Senttransactions = (props) => {
               <div style = { style.boxStyle }>
               <div style={ style.topTable }>
                 <div style={ style.sendDocument }>
-                  <input type="button" value="Send New Document" />
+                  <SentNew />
                 </div>
               </div>
               <Paper style = { style.paperStyle }>
