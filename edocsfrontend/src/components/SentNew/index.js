@@ -119,11 +119,12 @@ class SentNew extends React.Component {
             multiLine={true}
             rows={4}
             rowsMax={4}
-            style={{width:"100%"}}
+            style={{width:"100%", marginBottom: "15px", marginTop: "15px"}}
           />
           <br />
-          <Dropzone />
-          <div style = { style.dividerStyle } />
+          <div style={{marginLeft: '35%'}}>
+            <Dropzone />
+          </div>
           <Divider style = { style.dividerStyle }/>
         </Dialog>
       </div>
